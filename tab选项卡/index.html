@@ -21,16 +21,16 @@
 
 <body>
   <div class="tab js-tab" data-config='{
-  "triggerType": "mouseover", "effect": "fade" , "inwoke": 1, "auto": 2000 }'>
+  "triggerType": "mouseover", "effect": "fade" , "inwoke": 1, "auto": 3000 }'>
     <ul class="tab-nav">
       <li class="actived">
-        <a href="#">新闻</a>
+        <a href="javascript:;">新闻</a>
       </li>
       <li>
-        <a href="#">娱乐</a>
+        <a href="javascript:;">娱乐</a>
       </li>
       <li>
-        <a href="#">电影</a>
+        <a href="javascript:;">电影</a>
       </li>
     </ul>
     <div class="content-wrap">
@@ -53,8 +53,9 @@
   <script src="./js/tab.js" charset="utf-8"></script>
   <script type="text/javascript">
     $(function() {
-      // var tab1 = new Tab($('.js-tab').eq(0))
-      Tab.init($('.js-tab'))
+      // var tab1 = new Tab($('.js-tab').eq(0)) //默认
+      // Tab.init($('.js-tab'))
+      $('.js-tab').tab().css('background-color', 'red')
     })
   </script>
 
