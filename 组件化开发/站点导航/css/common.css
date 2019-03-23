@@ -11,3 +11,41 @@
 .link:hover {
   color: #f01414;
 }
+/* dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  position: relative;
+  z-index: 2;
+}
+
+.dropdown-arrow {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dropdown-layer {
+  display: none;
+  z-index: 1;
+  position: absolute;
+}
+
+.dropdown-left {
+  left: 0;
+  right: auto;
+}
+
+.dropdown-right {
+  right: 0;
+  left: auto;
+}
+
+[class*='-active'] .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.transition {
+  transition: all .3s
+}

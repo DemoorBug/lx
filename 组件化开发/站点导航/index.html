@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>shop</title>
     <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/iconfont.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/main.css">
   </head>
@@ -16,35 +17,35 @@
           <li class="fl"><a href="###" target="_blank" class="nav-site-mobile link">手机逛慕陶</a></li>
         </ul>
         <ul class="fr">
-          <li class="dropdown fl">
-            <a href="###" target="_blank" class="dropdown-toggle link">我的慕陶<i class="dropdown-arrow"></i></a>
+          <li class="menu dropdown fl" data-dropdown="menu">
+            <a href="###" target="_blank" class="dropdown-toggle link">我的慕陶<i class="dropdown-arrow iconfont transition">&#xe798;</i></a>
             <ul class="dropdown-layer dropdown-left">
-              <li><a href="###" target="_blank" class="dropdown-item">已经买到的宝贝</a></li>
-              <li><a href="###" target="_blank" class="dropdown-item">我的足迹</a></li>
+              <li><a href="###" target="_blank" class="menu-item">已经买到的宝贝</a></li>
+              <li><a href="###" target="_blank" class="menu-item">我的足迹</a></li>
             </ul>
           </li>
-          <li class="dropdown fl">
-            <a href="###" target="_blank" class="dropdown-toggle link">收藏夹<i class="dropdown-arrow"></i></a>
+          <li class="menu dropdown fl" data-dropdown="menu">
+            <a href="###" target="_blank" class="dropdown-toggle link">收藏夹<i class="dropdown-arrow iconfont transition">&#xe798;</i></a>
             <ul class="dropdown-layer dropdown-left">
-              <li><a href="###" target="_blank" class="dropdown-item">收藏的宝贝</a></li>
-              <li><a href="###" target="_blank" class="dropdown-item">收藏夹</a></li>
+              <li><a href="###" target="_blank" class="menu-item">收藏的宝贝</a></li>
+              <li><a href="###" target="_blank" class="menu-item">收藏夹</a></li>
             </ul>
           </li>
           <li class="fl">
             <a href="###" target="_blank" class="link nav-item-category">商品分类</a>
           </li>
-          <li class="dropdown fl">
-            <a href="###" target="_blank" class="dropdown-toggle link">卖家中心<i class="dropdown-arrow"></i></a>
+          <li class="menu dropdown fl" data-dropdown="menu">
+            <a href="###" target="_blank" class="dropdown-toggle link">卖家中心<i class="dropdown-arrow iconfont transition">&#xe798;</i></a>
             <ul class="dropdown-layer dropdown-left">
-              <li><a href="###" target="_blank" class="dropdown-item">收藏的宝贝</a></li>
-              <li><a href="###" target="_blank" class="dropdown-item">收藏夹</a></li>
+              <li><a href="###" target="_blank" class="menu-item">收藏的宝贝</a></li>
+              <li><a href="###" target="_blank" class="menu-item">收藏夹</a></li>
             </ul>
           </li>
-          <li class="nav-site-service dropdown fl">
-            <a href="###" target="_blank" class="dropdown-toggle link">联系客服<i class="dropdown-arrow"></i></a>
+          <li class="menu nav-site-service dropdown fl" data-dropdown="menu">
+            <a href="###" target="_blank" class="dropdown-toggle link">联系客服<i class="dropdown-arrow iconfont transition">&#xe798;</i></a>
             <ul class="dropdown-layer dropdown-right">
-              <li><a href="###" target="_blank" class="dropdown-item">买家客服</a></li>
-              <li><a href="###" target="_blank" class="dropdown-item">卖家客服</a></li>
+              <li><a href="###" target="_blank" class="menu-item">买家客服</a></li>
+              <li><a href="###" target="_blank" class="menu-item">卖家客服</a></li>
             </ul>
           </li>
         </ul>
@@ -53,8 +54,30 @@
 
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
-    <script src="./js/main.js" charset="utf-8">
-
+    <script src="./js/main.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    (function($) {
+      'use strict'
+      function dropdown(elem) {
+        var $elem = $(elem)
+        $elem.hover(function() {
+          var $this = $(this)
+          $this.addClass($this.data('dropdown')+'-active');
+        }, function() {
+          var $this = $(this)
+          $this.removeClass($this.data('dropdown')+'-active');
+        })
+      }
+      $.fn.extend({
+        dropdown: function() {
+          this.each(function() {
+            dropdown(this)
+          })
+          return this
+        }
+      })
+    })(jQuery);
+    $('.dropdown').dropdown()
     </script>
   </body>
 </html>
