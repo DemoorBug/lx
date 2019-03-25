@@ -63,13 +63,17 @@
     <script src="./js/index.js"></script>
     <script type="text/javascript">
       var $box = $('.box')
+      $box.showHide({
+        animate: 'slideUpDown'
+      })
       $('.show').on('click', function(e) {
-        js.slideRight.show($box)
+        // js.slideRight.show($box)
+        $box.showHide('show')
       })
       $('.hide').on('click', function() {
-        js.slideRight.hide($box)
+        // js.slideRight.hide($box)
+        $box.showHide('hide')
       })
-      js.slideRight.init($box)
       $($box).on('hide hidden', function(e) {
         console.log(e.type);
       })
