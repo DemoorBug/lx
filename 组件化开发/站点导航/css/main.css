@@ -4,7 +4,7 @@
   background-color: #f3f5f7;
 }
 
-.container {
+.nav-site .container {
   height: 44px;
   line-height: 44px;
   border-bottom: 1px solid #cdd0d4;
@@ -95,4 +95,50 @@
 .fadeOut {
   opacity: 0;
   visibility: visible;
+}
+/* header  */
+.header {
+  /* padding: 36px 0 34px 0; */
+  height: 118px;
+  width: 100%;
+  background: #f3f5f7;
+}
+.header-logo {
+  display: block;
+  height: 48px;
+  width: 136px;
+  background: url('../img/logo.png') no-repeat;
+  margin-left: 15px;
+}
+
+.header .search {
+  margin-left: 145px;
+}
+
+.header-logo,
+.header .search,
+.header .cart {
+  margin-top: 36px;
+}
+
+.background-glint {
+  animation: bg .7s;
+}
+
+@keyframes bg {
+  0% {
+    background: #fff;
+  }
+  25% {
+    background: rgb(255, 0, 0, .3);
+  }
+  50% {
+    background: #fff;
+  }
+  75% {
+    background: rgb(255, 0, 0, .3);
+  }
+  100% {
+    background: #fff;
+  }
 }

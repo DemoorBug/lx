@@ -45,7 +45,64 @@
 [class*='-active'] .dropdown-arrow {
   transform: rotate(180deg);
 }
-
+/* 动画 */
 .transition {
   transition: all .3s
+}
+/* 文字隐藏 */
+.text-hidden {
+  text-indent: -9999px;
+  overflow: hidden;
+}
+/* 显示省略号 */
+.text-ellipsis {
+  /* 显示省略号 */
+  text-overflow: ellipsis;
+  /* 不换号 */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* search */
+.search {
+  border: 1px solid #cfd2d5;
+  position: relative;
+}
+.search-inputbox {
+  height: 40px;
+  line-height: 40px;
+  width: 585px;
+  border: none;
+  background: #fff;
+  padding: 0 10px;
+}
+.search-btn {
+  line-height: 40px;
+  height: 40px;
+  width: 73px;
+  text-align: center;
+  color: #fff;
+  background: #07111b;
+  border: none;
+  cursor: pointer;
+}
+.search-layer {
+  position: absolute;
+  left: -1px;
+  top: 100%;
+  border: 1px solid #cfd2d5;
+  width: 100%;
+  display: none;
+}
+
+.search-layer-item {
+  height: 24px;
+  line-height: 24px;
+  padding: 0 10px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.search-layer-item:hover {
+  background-color: #f3f5f7
 }
