@@ -113,7 +113,7 @@
   </style>
 </head>
 <body>
-  <div class="menu dropdown fl" data-dropdown="menu">
+  <div class="menu dropdown fl" data-loda='dropdown.json'>
     <a href="javascript:;" class="dropdown-toggle link">我的慕陶<i class="dropdown-arrow"></i></a>
     <ul class="dropdown-layer dropdown-left">
       <li><a href="###" target="_blank" class="menu-item">已经买到的宝贝</a></li>
@@ -121,7 +121,7 @@
     </ul>
   </div>
 
-  <div class="menu dropdown fl" data-dropdown="menu">
+  <div class="menu dropdown fl">
     <a  href="javascript:;" class="dropdown-toggle link">我的慕陶<i class="dropdown-arrow"></i></a>
     <ul class="dropdown-layer dropdown-left">
       <li><a href="###" target="_blank" class="menu-item">已经买到的宝贝</a></li>
@@ -129,11 +129,11 @@
     </ul>
   </div>
 
-  <div class="menu dropdown fl" data-dropdown="menu">
+  <div class="menu dropdown fl">
     <a  href="javascript:;" class="dropdown-toggle link">我的慕陶<i class="dropdown-arrow"></i></a>
-    <ul class="dropdown-layer dropdown-left">
-      <li><a href="###" target="_blank" class="menu-item">已经买到的宝贝</a></li>
-      <li><a href="###" target="_blank" class="menu-item">我的足迹</a></li>
+    <ul class="dropdown-layer dropdown-left" data-load="dropdown.json">
+      <!-- <li><a href="###" target="_blank" class="menu-item">已经买到的宝贝</a></li> -->
+      <!-- <li><a href="###" target="_blank" class="menu-item">我的足迹</a></li> -->
     </ul>
   </div>
   <!-- 公共部分 -->
@@ -145,7 +145,8 @@
       <li>s</li>
     </ul>
   </div> -->
-
+  <button id="btn-show">显示</button>
+  <button id="btn-hide">隐藏</button>
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
   <script src="./case\显示和隐藏\js\transition.js"></script>
   <script src="./case\显示和隐藏\js\index.js"></script>
@@ -156,7 +157,37 @@
       //   animate: 'fade'
       // })
       $('.dropdown').dropdown({
-        active: 'menu'
+        animate: 'fade',
+        active: 'menu',
+        delay: 0
+      })
+      $('#btn-show').on('click', function() {
+        $('.dropdown').dropdown('show')
+      })
+      $('#btn-hide').on('click', function() {
+        $('.dropdown').dropdown('hide')
+      })
+      $('.dropdown-layer').on('hide hidden', function(e) {
+        // console.log(e.type);
+      })
+      $('.dropdown-layer').on('show', function(e) {
+        var html ='',
+            _this = this,
+            load = $(this).data('load')
+        if (!load) return
+        if (!$(this).data('loader')) {
+          console.log(html);
+          $.getJSON('test/'+load, function(json, textStatus) {
+            $.each(json, function (index) {
+              console.log('s');
+              html += `<li><a href="###" target="_blank" class="menu-item">${json[index].title}</a></li>`
+            })
+            // console.log(this);
+            $(_this).html(html)
+            $(_this).data('loader', true)
+          });
+        }
+        // console.log(e.type);
       })
       // $('.dropdown').dropdown({
         //   // css3: true,

@@ -87,3 +87,12 @@
 .menu-active .dropdown-layer {
   display: block;
 }
+
+.transition {
+  transition: all .3s;
+}
+
+.fadeOut {
+  opacity: 0;
+  visibility: visible;
+}

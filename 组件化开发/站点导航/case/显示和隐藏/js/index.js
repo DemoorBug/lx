@@ -1,5 +1,6 @@
 (function($) {
   var transition = window.mt.transiton
+
   function init($elem, hiddenCallback) {
     if ($elem.is(':hidden')) {
       $elem.data('start', 'hidden')
