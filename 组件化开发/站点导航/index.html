@@ -63,8 +63,8 @@
             <input type="submit" value="搜索" class="search-btn fl">
           </form>
           <ul class="search-layer">
-            <li class="search-layer-item text-ellipsis" title=""><a href="#">111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</a></li>
-            <li class="search-layer-item text-ellipsis"><a href="#">111</a></li>
+            <li class="search-layer-item text-ellipsis" title="">热门搜索</li>
+            <li class="search-layer-item text-ellipsis">nice吗</li>
           </ul>
         </div>
         <div class="cart fr">
@@ -73,13 +73,15 @@
       </div>
     </div>
 
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+    <!-- <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script> -->
+    <script>window.jQuery || document.write('<script src="js/jquery.js"><\/script>')</script>
     <!-- <script src="./js/index.js" charset="utf-8"></script> -->
     <script src="./case\显示和隐藏/js/transition.js"></script>
     <script src="./case\显示和隐藏/js/index.js"></script>
     <script src="./js/anim.js"></script>
-    <script src="./js/search.js"></script>
+    <!-- <script src="./js/search.js"></script> -->
+    <script src="./js/search-fun.js"></script>
     <script type="text/javascript">
     // (function($) {
     //   'use strict'
@@ -102,6 +104,57 @@
     //     }
     //   })
     // })(jQuery);
+    // 搜索框
+    var html = '',
+        htmlload = $('.search-layer').html();
+    $('.search').search({
+      autocomplete: true,
+    }).on('successEvent', function (e, data, $layer) {
+      html = createHeaderLyaer(data, $layer)
+      //判断是否输入值为空，空则显示默认下拉框，也就是最近搜索下拉框，可以把这些内容存到cookie，或者塞申里面，就可以得到一个用户搜索过的列表
+
+      // if ($('.search-inputbox').val().trim().length === 0) {
+      //
+      //   return
+      // }
+
+      if (html) {
+        $layer.html(html)
+        $(this).search('showLayer', $layer)
+      } else {
+        $layer.html('')
+        $(this).search('hideLayer', $layer)
+      }
+    }).on('click', 'li', function() {
+      $('.search').search('setInput', $(this).html())
+      // $('.search-form').submit()
+      $('.search').search('submit')
+    }).on('errEvent', function (e, $layer) {
+      $layer.html(htmlload)
+      // $(this).search('hideLayer', $layer)
+    })
+
+
+
+    function createHeaderLyaer(data, $layer) {
+      //成功回调
+      var html = '',
+          dataNum = data.result.length,
+          numMax = 9; //自定义显示条目
+      if (dataNum === 0) { //没有数据就直接退出
+        return ''
+      }
+
+      for (var i = 0; i < dataNum; i++) { //循环遍历数据
+        if (numMax <= i) { //自定义显示条目
+          break
+        }
+        html += '<li class="search-layer-item text-ellipsis">'+data.result[i][0]+'</li>'
+      }
+      return html
+    }
+
+    // 下拉
     $('.dropdown').dropdown({
       animate: 'fade'
     })
