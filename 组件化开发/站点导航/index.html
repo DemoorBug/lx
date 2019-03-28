@@ -67,9 +67,61 @@
             <li class="search-layer-item text-ellipsis">nice吗</li>
           </ul>
         </div>
-        <div class="cart fr">
-
+        <div class="cart fr transition">
+          <div class="fl">
+            <a href="#" class="care-shop transition"><i class="iconfont">&#xe61b;</i>购物车</a>
+          </div>
+          <div class="fr cart-fr">
+            <i class="fr iconfont cart-arrow transition">&#xe798;</i>
+            <div class="cart-num fr transition">
+              0
+            </div>
+          </div>
+          <div class="cart-layer transition fadeOut" data-load="cart.json">
+            <div class="loade">
+              <div class="loader-1"></div>
+              <div class="loader-2"></div>
+              <div class="loader-3"></div>
+              <div class="loader-4"></div>
+              <div class="loader-5"></div>
+            </div>
+            <!-- <div class="cart-layer-title">
+              最新加入的商品
+            </div>
+            <ul class="cart-layer-list">
+              <li class="cart-layer-item clearfix">
+                <a href="#" class="fl cart-img"><img src="./img/layer.png" alt=""></a>
+                <div class="fl cart-time-ls">
+                  <a href="#" class="link cart-tit text-ellipsis">adidas 阿迪达斯 训练 男子</a>
+                  <div class="cart-m">
+                    ￥335×1
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="cart-layer-bottom">
+              <div class="fl cart-layer-o">
+                共27商品
+              </div>
+              <div class="fl cart-layer-j">
+                ￥0.00
+              </div>
+              <div class="fr cart-layer-m">
+                <a href="#">去购物车</a>
+              </div>
+            </div> -->
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="container">
+        <a href="#" class="link">数码城</a
+        ><a href="#" class="link">天黑黑</a
+        ><a href="#" class="link">天黑黑团购</a
+        ><a href="#" class="link">发现</a
+        ><a href="#" class="link">二手特价</a
+        ><a href="#" class="link">名品汇</a>
       </div>
     </div>
 
@@ -154,6 +206,13 @@
       return html
     }
 
+    //购物车
+    $('.cart').dropdown({
+      animate: 'fade',
+      layer: 'cart-layer',
+      active: 'cart'
+    })
+
     // 下拉
     $('.dropdown').dropdown({
       animate: 'fade'
@@ -164,7 +223,7 @@
           load = $(this).data('load')
       if (!load) return
       if (!$(this).data('loader')) {
-        console.log(html);
+
         $.getJSON('test/'+load, function(json, textStatus) {
           $.each(json, function (index) {
             console.log('s');
@@ -175,6 +234,50 @@
         });
       }
       // console.log(e.type);
+    })
+    $('.cart-layer').on('show', function (e) {
+      var html ='',
+          $this = $(this),
+          load = $(this).data('load'),
+          num = 0,
+          length = 0;
+      if (!load) return
+      if (!$(this).data('loader')) {
+        html += `<div class="cart-layer-title">
+          最新加入的商品
+        </div>
+        <ul class="cart-layer-list">`;
+        setTimeout(function () {
+          $.getJSON('test/'+load, function(json, textStatus) {
+            $.each(json, function (index) {
+              html += `<li class="cart-layer-item clearfix">
+              <a href="${json[index].url}" class="fl cart-img"><img src="${json[index].img}" alt=""></a>
+              <div class="fl cart-time-ls">
+              <a href="#" class="link cart-tit text-ellipsis">${json[index].title}</a>
+              <div class="cart-m">
+              ${json[index].price}×${json[index].num}
+              </div>
+              </div>
+              </li>`
+              num += json[index].price * json[index].num
+              length++
+            })
+            html += `</ul>
+            <div class="cart-layer-bottom">
+            <div class="fl cart-layer-o">
+            共${length}商品
+            </div>
+            <div class="fl cart-layer-j">
+            ￥${num}
+            </div>
+            <div class="fr cart-layer-m">
+            <a href="#">去购物车</a>
+            </div>`
+            $this.html(html)
+            $this.data('loader', true)
+          });
+        },500)
+      }
     })
     </script>
   </body>

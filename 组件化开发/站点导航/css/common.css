@@ -9,7 +9,7 @@
 }
 
 .link:hover {
-  color: #f01414;
+  color: #f01414 !important;
 }
 /* dropdown */
 .dropdown {

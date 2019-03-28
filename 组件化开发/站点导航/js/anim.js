@@ -4,7 +4,7 @@
   function Dropdown(elem, option) {
     this.$elem = $(elem)
     //这里我本来写的$($('.dropdown-layer')) 直接获取所有了，自己还没找到。。
-    this.$layer = this.$elem.find('.dropdown-layer')
+    this.$layer = this.$elem.find('.'+ option.layer)
     this.activeClass = option.active + '-active'
     this.option = option
 
@@ -70,7 +70,8 @@
     js: true,
     animate: 'slideUpDown',
     active: 'menu',
-    delay: 0
+    delay: 0,
+    layer: 'dropdown-layer'
   }
   // window.mt.Dropdown = Dropdown
   $.fn.extend({
