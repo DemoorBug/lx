@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>Slide</title>
+    <link rel="stylesheet" href="../站点导航/css/base.css">
+    <link rel="stylesheet" href="../站点导航/css/common.css">
+    <link rel="stylesheet" href="./css/main.css">
+  </head>
+  <body>
+    <div class="slider slider-fade">
+      <div class="slider-container">
+        <div class="slider-item">
+          <a href="#"><img src="./img/focus-slider/1.png" alt=""></a>
+        </div>
+        <div class="slider-item">
+          <a href="#"><img src="./img/focus-slider/2.png" alt=""></a>
+        </div>
+        <div class="slider-item">
+          <a href="#"><img src="./img/focus-slider/3.png" alt=""></a>
+        </div>
+        <div class="slider-item">
+          <a href="#"><img src="./img/focus-slider/4.png" alt=""></a>
+        </div>
+      </div>
+      <ol class="slider-indicator-wrap">
+        <li class="slider-indicator text-hidden slider-indicator-active">1</li>
+        <li class="slider-indicator text-hidden">2</li>
+        <li class="slider-indicator text-hidden">3</li>
+        <li class="slider-indicator text-hidden">4</li>
+      </ol>
+      <a href="javascript:;" class="slider-control-left slider-control">&lt;</a>
+      <a href="javascript:;" class="slider-control-right slider-control">&gt;</a>
+    </div>
+    <script src="../站点导航/js/jquery.js"></script>
+    <script src="./js/slider.js"></script>
+    <script type="text/javascript">
+      $('.slider').slider()
+    </script>
+  </body>
+</html>

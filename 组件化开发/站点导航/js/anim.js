@@ -16,7 +16,7 @@
       this.$layer.showHide(this.option)
       if (this.option.event === 'click') {
         this.$elem.on('click', function(e) {
-          _this.$allelem = _this.$elem.siblings().find('.dropdown-layer:visible')
+          _this.$allelem = _this.$elem.siblings().find('.'+ this.option.layer+':visible')
           if (_this.$allelem) {
             //哈哈哈，很不错，这个呢就是根据打开元素关闭标签
             _this.Allhide()

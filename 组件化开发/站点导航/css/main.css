@@ -404,3 +404,74 @@
   color: #fff;
   font-size: 14px;
 }
+/* focue左侧 */
+.focus {
+  height: 504px;
+}
+/* 慕快报 */
+.focus-sidebar {
+  width: 249px;
+}
+.focus-news {
+  border: 1px solid #d9dde1;
+  border-bottom: none;
+  padding: 5px 20px 13px 20px;
+  background: #fff
+}
+.focus-news-head {
+  height: 39px;
+  line-height: 39px;
+}
+.focus-news-title {
+  font-size: 16px;
+  color: #f01414;
+}
+.focus-news-body{
+  line-height: 28px;
+}
+
+
+.focus-service {
+  border-left: 1px solid #d9dde1;
+}
+.focus-service-item {
+  height: 71px;
+  width: 61px;
+  border-right: 1px solid #d9dde1;
+  border-top: 1px solid #d9dde1;
+  display: block;
+  text-align: center;
+}
+.focus-service-item:hover {
+  color: red;
+}
+.focus-service-item:hover .focus-service-icon {
+  animation: focusIcon .6s;
+}
+
+@keyframes focusIcon {
+  0% {
+    transform: translateY(10%)
+  }
+  25% {
+    transform: translateY(-20%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+  75% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+.focus-service-icon {
+  color: #f67272;
+  margin: 11px auto 6px;
+  display: block;
+  font-size: 30px;
+}
+.focus-service-text {
+
+}
