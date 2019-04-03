@@ -50,3 +50,6 @@
   border: 1px solid #222;
   background: #fff
 }
+.fadeOut {
+  opacity: 0;
+}

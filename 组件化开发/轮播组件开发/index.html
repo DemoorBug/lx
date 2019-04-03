@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../站点导航/css/base.css">
     <link rel="stylesheet" href="../站点导航/css/common.css">
     <link rel="stylesheet" href="./css/main.css">
+
   </head>
   <body>
     <div class="slider slider-fade">
@@ -33,9 +34,13 @@
       <a href="javascript:;" class="slider-control-right slider-control">&gt;</a>
     </div>
     <script src="../站点导航/js/jquery.js"></script>
+    <script src="../站点导航/case/显示和隐藏/js/transition.js"></script>
+    <script src="../站点导航/case/显示和隐藏/js/index.js"></script>
     <script src="./js/slider.js"></script>
     <script type="text/javascript">
-      $('.slider').slider()
+      $('.slider').slider({
+        animate: 'fade'
+      })
     </script>
   </body>
 </html>

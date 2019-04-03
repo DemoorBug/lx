@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>Slide</title>
+    <link rel="stylesheet" href="../站点导航/css/base.css">
+    <link rel="stylesheet" href="../站点导航/css/common.css">
+    <style>
+      .slider {
+        color: red;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        background-color: red;
+        width: 500px;
+        height: 500px;
+        margin-left: -250px;
+      }
+      a {
+        color: #222;
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="javascript:;" class="left">&lt;</a>
+    <a href="javascript:;" class="right">&gt;</a>
+    <div class="slider">
+
+    </div>
+
+    <script src="../站点导航/js/jquery.js"></script>
+    <script src="../站点导航/case/显示和隐藏/js/transition.js"></script>
+    <!-- <script src="../站点导航/case/显示和隐藏/js/index.js"></script> -->
+    <script src="./js/move.js"></script>
+    <script type="text/javascript">
+    var $left = $('.left'),
+        $right = $('.right'),
+        $slider = $('.slider');
+        $slider.move({
+          css3: true,
+          js: true
+        })
+    $left.on('click', function () {
+      $slider.move('to', 400)
+    })
+    $right.on('click', function () {
+      $slider.move('to', 1000)
+    })
+    </script>
+  </body>
+</html>

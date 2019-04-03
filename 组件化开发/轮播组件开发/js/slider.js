@@ -9,34 +9,71 @@
     this.$left = this.$elem.find('.slider-control-left')
     this.$right = this.$elem.find('.slider-control-right')
 
-    this.indicator = this.options.activeIndex;
+    this.curIndex = this._getCurIndex(this.options.activeIndex);
+    this.$itemNumber = this.$items.length
 
     this._init()
   }
   Slider.prototype = {
     constructor: Slider,
+    _getCurIndex: function (index) {
+      if (isNaN(Number(index))) {
+        return 0;
+      }
+      if (index < 0) {
+        return this.$itemNumber -1
+      }
+      if (index > this.$itemNumber - 1) {
+        return 0;
+      }
+      return index;
+    },
     _init: function () {
       var _this = this
-      this.$items.eq(this.indicator).show();
-      this.$indicators.eq(this.indicator).addClass('slider-indicator-active').siblings().removeClass('slider-indicator-active');
+      this.$indicators.eq(this.curIndex).addClass('slider-indicator-active').siblings().removeClass('slider-indicator-active');
 
       if (this.options.animation === 'slide') {
 
       } else { //fade
+        this.$items.eq(this.curIndex).show();
         this.to = this._fade
       }
-      this.$right.on('click', function () {
-        _this.to(_this.indicator + 1)
+      this.$items.showHide(this.options)
+      this.$elem
+        .on('click', '.slider-control-right',function () {
+          _this.to(_this._getCurIndex(_this.curIndex + 1))
+        })
+        .on('click', '.slider-control-left', function () {
+          _this.to(_this._getCurIndex(_this.curIndex -1))
+        })
+        .on('click', '.slider-indicator', function (e) {
+          _this.to(_this.$indicators.index(this))
+        })
+
+      this.$elem.hover(function () {
+        clearInterval(_this.autoItem)
+      }, function () {
+        _this.auto()
       })
+      this.auto()
     },
     _fade: function (index) {
-      console.log(this.indicator, index);
-      this.$items.eq(this.indicator).hide();
-      this.$items.eq(index).show();
+      if (this.curIndex === index) {
+        return
+      }
 
-      this.$indicators.eq(this.indicator).removeClass('slider-indicator-active');
+      this.$items.eq(this.curIndex).showHide('hide');
+      this.$items.eq(index).showHide('show');
+
+      this.$indicators.eq(this.curIndex).removeClass('slider-indicator-active');
       this.$indicators.eq(index).addClass('slider-indicator-active');
-      this.indicator = index
+      this.curIndex = index
+    },
+    auto: function () {
+      var _this = this
+      this.autoItem = setInterval(function () {
+        _this.to(_this._getCurIndex(_this.curIndex + 1))
+      }, this.options.interval)
     }
   }
   Slider.DEFAULTS = {
@@ -44,7 +81,7 @@
     js: true,
     activeIndex: 0,
     animation: 'fade',
-    interval: 500
+    interval: 4000
   }
   $.fn.extend({
     slider: function(option) {
