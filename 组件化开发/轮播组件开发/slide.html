@@ -40,6 +40,8 @@
         $slider.move({
           css3: true,
           js: true
+        }).on('move moved', function (e) {
+          console.log(e.type);
         })
     $left.on('click', function () {
       $slider.move('to', 400)
@@ -47,6 +49,7 @@
     $right.on('click', function () {
       $slider.move('to', 1000)
     })
+
     </script>
   </body>
 </html>

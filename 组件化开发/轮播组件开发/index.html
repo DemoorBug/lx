@@ -9,7 +9,7 @@
 
   </head>
   <body>
-    <div class="slider slider-fade">
+    <div class="slider" data-src="http://name">
       <div class="slider-container">
         <div class="slider-item">
           <a href="#"><img src="./img/focus-slider/1.png" alt=""></a>
@@ -36,10 +36,12 @@
     <script src="../站点导航/js/jquery.js"></script>
     <script src="../站点导航/case/显示和隐藏/js/transition.js"></script>
     <script src="../站点导航/case/显示和隐藏/js/index.js"></script>
+    <script src="./js/move.js"></script>
     <script src="./js/slider.js"></script>
     <script type="text/javascript">
       $('.slider').slider({
-        animate: 'fade'
+        animate: 'fade',
+        animation: 'slide'
       })
     </script>
   </body>

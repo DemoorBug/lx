@@ -1,6 +1,5 @@
 (function ($) {
   var transition = window.mt.transiton;
-  console.log(transition);
   var init = function ($elem) {
     this.$elem = $elem;
     this.curX = this.$elem.css('left')
@@ -27,10 +26,13 @@
     to: function (x, y) {
       var self = this
       to.call(this, x, y, function () {
+        self.$elem.trigger('move', [self.$elem])
         self.$elem.css({
           left: x,
           top: y
         })
+        self.$elem.trigger('moved', [self.$elem])
+
       })
     }
   }
@@ -44,9 +46,13 @@
     to: function (x, y) {
       var self = this
       to.call(this, x, y, function () {
+        self.$elem.trigger('move', [self.$elem])
         self.$elem.css({
           left: x,
           top: y
+        })
+        self.$elem.off(transition.end).one(transition.end, function () {
+          self.$elem.trigger('moved', [self.$elem])
         })
       })
     }
@@ -60,9 +66,12 @@
     to: function (x, y) {
       var self = this
       to.call(this, x, y, function () {
+        self.$elem.trigger('move', [self.$elem])
         self.$elem.stop().animate({
           left: x,
           top: y
+        }, function () {
+          self.$elem.trigger('moved', [self.$elem])
         })
       })
     }
@@ -76,10 +85,8 @@
   var move = function ($elem, options) {
     var mode = null;
     if (options.css3 && transition.isSupport) {
-      console.log('s');
       mode = new Css3($elem)
     } else if (options.js) {
-      console.log('s');
       mode = new Js($elem)
     } else {
       mode = new Slider($elem)
@@ -97,7 +104,6 @@
         var $this = $(this),
           mode = $(this).data('move'),
           options = $.extend({}, defaults, typeof option === 'object' && option);
-          console.log(options);
         if (!mode) {
           $this.data('move', mode = move($this, options))
         }

@@ -40,16 +40,24 @@
 .slider-control-right {
   right: 0;
 }
-.slider-fade .slider-item {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
 .slider-indicator-wrap .slider-indicator-active {
   border: 1px solid #222;
   background: #fff
 }
 .fadeOut {
   opacity: 0;
+}
+.slider-fade .slider-item {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.slider-slide .slider-item {
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+.slider-slide {
+  overflow: hidden;
 }
