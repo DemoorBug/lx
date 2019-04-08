@@ -16,37 +16,29 @@
   }
   Slider.prototype = {
     constructor: Slider,
-    //处理index
-    _getCurIndex: function (index, maxNumber) {
-      maxNumber = maxNumber || this.$itemNumber
+    _getCurIndex: function (index) {
       if (isNaN(Number(index))) {
         return 0;
       }
       if (index < 0) {
-        return maxNumber -1
+        return this.$itemNumber -1
       }
-      if (index > maxNumber - 1) {
-
+      if (index > this.$itemNumber - 1) {
         return 0;
       }
-
       return index;
     },
     _init: function () {
       var _this = this
       this.$indicators.eq(this.curIndex).addClass('slider-indicator-active').siblings().removeClass('slider-indicator-active');
-      this.$elem.trigger('slider-show', [this.curIndex, this.$items[this.curIndex]])
 
       if (this.options.animation === 'slide') {
-        this.$container = this.$elem.find('.slider-container')
-        this.$container.append(this.$items.eq(0).clone())
         this.$elem.addClass('slider-slide')
+        this.$items.eq(this.curIndex).css('left', 0)
         this.to = this._slide
-        this.$itemWidth = this.$items.eq(0).width();
-        this.$container.css('left', -1 * this.curIndex * this.$itemWidth)
-        this.$container.move(this.options)
-        this.$itemNumber++
-
+        this.itemWidth = this.$items.eq(0).width()
+        this.$items.move(this.options)
+        this.transitionClass = this.$items.eq(0).hasClass('transition') ? 'transition' : '';
       } else { //fade
         this.$elem.addClass('slider-fade')
         this.$items.eq(this.curIndex).show();
@@ -65,21 +57,34 @@
         _this.to(_this.$indicators.index(this))
       })
 
-      // this.$elem.hover($.proxy(this.pause, this), $.proxy(this.auto, this));
-      this.$elem.on('mouseenter', $.proxy(this.pause, this))
-      this.$elem.on('mouseleave', $.proxy(this.auto, this))
+      this.$elem.hover(function () {
+        clearInterval(_this.autoItem)
+      }, function () {
+        _this.auto()
+      })
       this.auto()
 
       this.$items.on('show shown hide hidden', function (e) {
         _this.$elem.trigger('slider-' + e.type, [_this.$items.index(this), this])
       })
-      this.$container.on('move', function (e) {
-        var num = parseInt($(this).css('left'))  / -728;
-        var index = Math.ceil(_this._getCurIndex(num+1, _this.$itemNumber - 1))
-        _this.$elem.trigger('slider-show', [index, _this.$items[index]])
+
+      this.$items.on('move moved', function (e) {
+        var index = _this.$items.index(this);
+        console.log(e.type === 'move');
+        if (e.type === 'move') {
+          if (index === _this.curIndex) {
+            _this.$elem.trigger('slider-hide', [index, this]);
+          }else {
+            _this.$elem.trigger('slider-show', [index, this]);
+          }
+        } else {
+          if (index === _this.curIndex) {
+            _this.$elem.trigger('slider-shown', [index, this]);
+          }else {
+            _this.$elem.trigger('slider-hidden', [index, this]);
+          }
+        }
       })
-
-
     },
     _fade: function (index) {
       if (this.curIndex === index) {
@@ -95,7 +100,6 @@
     },
     auto: function () {
       var _this = this
-      clearInterval(this.autoItem);
       this.autoItem = setInterval(function () {
         _this.to(_this._getCurIndex(_this.curIndex + 1), -1)
       }, this.options.interval)
@@ -104,34 +108,29 @@
       if (this.curIndex === index) {
         return
       }
-      this.$container.move('to', -1 * index * this.$itemWidth)
-      this.curIndex = index
-      var self = this
-      if (direction) {
-        if (direction < 0) {
-          if (index === 0) {
-            this.$container.removeClass('transition').css('left', 0)
-            this.curIndex = index = 1
-            setTimeout(function () {
-              self.$container.addClass('transition').move('to', -1 * index * self.$itemWidth)
-            }, 20)
-          }
-        } else {
-          if (index === this.$itemNumber - 1) {
-            this.$container.removeClass('transition').css('left', -1 * index * self.$itemWidth)
-            this.curIndex = index = this.$itemNumber - 2
-            setTimeout(function () {
-              self.$container.addClass('transition').move('to', -1 * index * self.$itemWidth)
-            }, 20)
-          }
+      //确认划入的方向
+      if (!direction) {
+        if (this.curIndex < index) {
+          direction = -1
+        } else if (this.curIndex > index) {
+            direction = 1
         }
       }
-      index = this._getCurIndex(index, this.$itemNumber - 1)
-      this.$indicators.removeClass('slider-indicator-active');
+      // 设置指定划入幻灯片的初始位置
+      //初始位置，挖草，就是把图片放到最左边，和那个fade动画最后一张图一个道理，我的天，我怎么这么蠢
+      this.$items.eq(index).removeClass(this.transitionClass).css('left', -1 * direction * this.itemWidth)
+      //当前幻灯片划出可视区域，指定幻灯片划入可视区域
+      var self = this
+      setTimeout(function () {
+        self.$items.eq(self.curIndex).move('to', direction * self.itemWidth)
+        self.$items.eq(index).addClass(self.transitionClass).move('to', 0)
+        self.curIndex = index
+      }, 20)
+
+      //激活indicator
+      this.$indicators.eq(this.curIndex).removeClass('slider-indicator-active');
       this.$indicators.eq(index).addClass('slider-indicator-active');
-    },
-    pause: function() {
-        clearInterval(this.autoItem);
+
     }
   }
   Slider.DEFAULTS = {

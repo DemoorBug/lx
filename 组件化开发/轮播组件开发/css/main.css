@@ -53,11 +53,29 @@
   top: 0;
   left: 0;
 }
-.slider-slide .slider-item {
+/* .slider-slide .slider-item {
   position: absolute;
   top: 0;
   left: 100%;
 }
 .slider-slide {
   overflow: hidden;
+} */
+.slider-slide {
+  overflow: hidden;
+}
+.slider-slide .slider-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1000%;
+    height: 100%;
+    background-color: red;
+
+}
+.slider-slide .slider-item {
+  float: left;
+  width: 728px;
+  height: 100%;
+  background: url(../img/TB1FEsePXXXXXcqXXXXXXXXXXXX-80-80.gif) 50% 50% no-repeat #f5f5f5!important;
 }

@@ -12,16 +12,16 @@
     <div class="slider" data-src="http://name">
       <div class="slider-container">
         <div class="slider-item">
-          <a href="#"><img src="./img/focus-slider/1.png" alt=""></a>
+          <a href="#"><img src="" data-src="./img/focus-slider/1.png" class="slider-img" alt=""></a>
         </div>
         <div class="slider-item">
-          <a href="#"><img src="./img/focus-slider/2.png" alt=""></a>
+          <a href="#"><img src="" data-src="./img/focus-slider/2.png" class="slider-img" alt=""></a>
         </div>
         <div class="slider-item">
-          <a href="#"><img src="./img/focus-slider/3.png" alt=""></a>
+          <a href="#"><img src="" data-src="./img/focus-slider/3.png" class="slider-img" alt=""></a>
         </div>
         <div class="slider-item">
-          <a href="#"><img src="./img/focus-slider/4.png" alt=""></a>
+          <a href="#"><img src="" data-src="./img/focus-slider/4.png" class="slider-img" alt=""></a>
         </div>
       </div>
       <ol class="slider-indicator-wrap">
@@ -39,10 +39,50 @@
     <script src="./js/move.js"></script>
     <script src="./js/slider.js"></script>
     <script type="text/javascript">
+    $(function () {
+      $('.slider').on('slider-show', function (e, index, elem) {
+        var $img = $(elem).find('.slider-img')
+        loadImg($img.data('src'), function (url) {
+          $img.attr('src', url)
+          console.log(index + ': loaded');
+        }, function () {
+          console.log('错误操作')
+        })
+
+      })
       $('.slider').slider({
         animate: 'fade',
         animation: 'slide'
       })
+
+
+    })
+
+    function loadImg(url, imgLoaded, errLoaded) {
+      var image = new Image();
+
+      image.onerror = function () {
+        if (typeof imgLoaded === 'function') {
+          return errLoaded(url)
+        }
+      }
+
+      image.onload = function () {
+        if (typeof imgLoaded === 'function') {
+          return imgLoaded(url)
+        }
+      }
+      setTimeout(function () {
+        // $('slider-img').eq($(this).find('.slider-item').length-1).attr('src', $('slider-img').eq(0).attr('src'))
+        image.src = url;
+        if (!$('.slider-img').eq(0).attr('src')) {
+          setTimeout(function () {
+            $('.slider-img').eq($('.slider-item').length - 1).attr('src', $('.slider-img').eq(0).attr('src'))
+          }, 20)
+        }
+      }, 1000)
+    }
+
     </script>
   </body>
 </html>
