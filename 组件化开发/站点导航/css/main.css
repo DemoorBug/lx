@@ -203,6 +203,7 @@
   padding: 0 8px 16px 13px;
   background: #fff;
   box-shadow: -5px 5px 4px #54494921;
+  z-index: 999
 }
 .cart-layer-title {
   height: 52px;
@@ -474,4 +475,91 @@
 }
 .focus-service-text {
 
+}
+
+#focus-slider.slider {
+  width: 728px;
+  height: 504px;
+  position: relative;
+  margin-left: 8px;
+}
+
+.slider-item {
+
+}
+.slider-indicator-wrap {
+  position: absolute;
+  bottom: 10px;
+  left: 50%
+}
+.slider-indicator-wrap .slider-indicator {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #222;
+  border: 1px solid #fff;
+  float: left;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.slider-control {
+  position: absolute;
+  top: 50%;
+  height: 62px;
+  width: 20px;
+  color: #fff;
+  line-height: 62px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  font-family: "宋体"
+}
+.slider-control-left {
+  left: 0;
+}
+.slider-control-right {
+  right: 0;
+}
+.slider-indicator-wrap .slider-indicator-active {
+  border: 1px solid #222;
+  background: #fff
+}
+.fadeOut {
+  opacity: 0;
+}
+.slider-fade .slider-item {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slider-slide {
+  overflow: hidden;
+}
+.slider-slide .slider-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1000%;
+    height: 100%;
+    background-color: red;
+
+}
+#focus-slider.slider-slide .slider-item {
+  float: left;
+  width: 728px;
+  height: 100%;
+  background: url(../img/TB1FEsePXXXXXcqXXXXXXXXXXXX-80-80.gif) 50% 50% no-repeat #f5f5f5!important;
+}
+
+#jinri-slider.slider .slider-item {
+  float: left;
+  width: 240px;
+  height: 158px;
+  background: url(../img/TB1FEsePXXXXXcqXXXXXXXXXXXX-80-80.gif) 50% 50% no-repeat #f5f5f5!important;
+}
+#jinri-slider.slider {
+  width: 100%;
+  height: 158px;
+  position: relative;
 }

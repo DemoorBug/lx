@@ -9,7 +9,7 @@
 
   </head>
   <body>
-    <div class="slider" data-src="http://name">
+    <div class="slider">
       <div class="slider-container">
         <div class="slider-item">
           <a href="#"><img src="" data-src="./img/focus-slider/1.png" class="slider-img" alt=""></a>
@@ -40,14 +40,26 @@
     <script src="./js/slider.js"></script>
     <script type="text/javascript">
     $(function () {
-      $('.slider').on('slider-show', function (e, index, elem) {
-        var $img = $(elem).find('.slider-img')
-        loadImg($img.data('src'), function (url) {
-          $img.attr('src', url)
-          console.log(index + ': loaded');
-        }, function () {
-          console.log('错误操作')
-        })
+      var items = {};
+      var loadedItemNum = 0;
+      var totalItemNum = $('.slider').find('.slider-img').length
+      var loadItem;
+
+      $('.slider').on('slider-show', loadItem = function (e, index, elem) {
+        console.log(1);
+        if (items[index] !== 'loaded') {
+          var $img = $(elem).find('.slider-img')
+          loadImg($img.data('src'), function (url) {
+            $img.attr('src', url)
+            items[index] = 'loaded'
+            loadedItemNum++
+            if (loadedItemNum === totalItemNum) {
+              $('.slider').off('slider-show', loadItem)
+            }
+          }, function () {
+            console.log('错误操作')
+          })
+        }
 
       })
       $('.slider').slider({
