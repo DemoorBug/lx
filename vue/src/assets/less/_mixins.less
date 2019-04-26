@@ -1,0 +1,42 @@
+@import "_variables.less";
+
+@baseFontSize: 40;//基于视觉稿横屏尺寸/100得出的基准font-size
+@r: @baseFontSize * 1rem;
+
+.fontSize (@class; @size) {
+  @{class} {
+    font-size: @size * 1px;
+  }
+  [data-dpr="2"] @{class}{
+    font-size: @size * 2px;
+  }
+
+  [data-dpr="3"] @{class} {
+    font-size: @size * 3px;
+  }
+}
+// flex-center
+// @mixin flex-center($direction: row) {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   flex-direction: $direction;
+// }
+
+//ellipsis
+// @mixin ellipsis() {
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   white-space: nowrap;
+// }
+
+//multi line ellipsis
+// @mixin multiline-ellipsis($num: 2) {
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   display: -webkit-box;
+//   -webkit-line-clamp: $num;
+//   -webkit-box-orient: vertical;
+//   white-space: normal !important;
+//   word-wrap: break-word;
+// }

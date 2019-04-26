@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>getter,setter</title>
+</head>
+<body>
+  <div class="audio"></div>
+  <script>
+    class Audoplay {
+      constructor () {
+        this._start = 0;
+        this.start = 0;
+      }
+      get start () {
+        return this._start;
+      }
+      set start (val) {
+        const START = {
+          0: '播放',
+          1: '暂停',
+          2: '开始播放'
+        }
+        document.querySelector('.audio').innerText = START[val]
+        this._start = val
+      }
+    }
+    var net = new Audoplay();
+    //控制台输入，net.start = 1; net.start = 2 测试
+  </script>
+</body>
+</html>
