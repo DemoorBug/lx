@@ -6,6 +6,7 @@ import fastclick from 'fastclick'
 
 import 'assets/js/remUnit.js'
 import 'assets/less/index.less'
+import 'swiper/dist/css/swiper.css'
 
 fastclick.attach(document.body)
 
