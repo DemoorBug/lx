@@ -1,7 +1,7 @@
 const sliderOptions = {
   direction: 'horizontal',
-  loop: false,
-  interval: 0,
+  loop: true,
+  interval: 3000,
   pagination: true
 }
 

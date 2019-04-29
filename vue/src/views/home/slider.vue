@@ -1,11 +1,13 @@
 <template>
   <!-- 为什么要单个传输呢,是因为好效验 -->
   <div class="slider-wrapper">
+    <me-loading v-if="!sliders.length"></me-loading>
     <me-slider
       :direction="direction"
       :loop="loop"
       :interval="interval"
       :pagination="pagination"
+      v-if="sliders.length"
     >
       <swiper-slide
         v-for="(item, index) of sliders"
@@ -21,8 +23,11 @@
 
 <script>
 import MeSlider from 'base/slider'
+import MeLoading from 'base/loading'
 import { swiperSlide } from 'vue-awesome-swiper'
 import { sliderOptions } from './config'
+import { getHomeSlider } from 'api/home'
+
 const { direction, loop, interval, pagination } = sliderOptions
 
 export default {
@@ -34,28 +39,39 @@ export default {
       interval,
       pagination,
       sliders: [
-        {
-          'linkUrl': 'https://www.imooc.com',
-          'picUrl': require('./1.jpg')
-        },
-        {
-          'linkUrl': 'https://www.imooc.com',
-          'picUrl': require('./2.jpg')
-        },
-        {
-          'linkUrl': 'https://www.imooc.com',
-          'picUrl': require('./3.jpg')
-        },
-        {
-          'linkUrl': 'https://www.imooc.com',
-          'picUrl': require('./4.jpg')
-        }
+        // {
+        //   'linkUrl': 'https://www.imooc.com',
+        //   'picUrl': require('./1.jpg')
+        // },
+        // {
+        //   'linkUrl': 'https://www.imooc.com',
+        //   'picUrl': require('./2.jpg')
+        // },
+        // {
+        //   'linkUrl': 'https://www.imooc.com',
+        //   'picUrl': require('./3.jpg')
+        // },
+        // {
+        //   'linkUrl': 'https://www.imooc.com',
+        //   'picUrl': require('./4.jpg')
+        // }
       ]
     }
   },
   components: {
     MeSlider,
-    swiperSlide
+    swiperSlide,
+    MeLoading
+  },
+  created () {
+    this.getSliders()
+  },
+  methods: {
+    getSliders () {
+      getHomeSlider().then(data => {
+        this.sliders = data
+      })
+    }
   }
 }
 </script>

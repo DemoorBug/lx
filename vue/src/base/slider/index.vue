@@ -58,7 +58,8 @@ export default {
         slidesPerView: 1, // 容器同时显示几张图片
         loop: this.loop,
         pagination: { // 分页器?
-          el: this.pagination ? '.swiper-pagination' : null
+          el: this.pagination ? '.swiper-pagination' : null,
+          clickable: true
         }
       }
     }
