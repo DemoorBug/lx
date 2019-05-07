@@ -1,5 +1,5 @@
 <template>
-  <swiper :options="swiperOption">
+  <swiper :options="swiperOption" ref="swiper" :key="keyId">
     <!-- <swiper-slide v-for="item in sliders">
       <a href="#">
         <img src="" alt="">
@@ -44,11 +44,35 @@ export default {
     pagination: {
       type: Boolean,
       default: true
+    },
+    data: {
+      type: Array,
+      default () {
+        return []
+      }
     }
   },
   data () {
     return {
-      swiperOption: {
+      keyId: Math.random()
+
+    }
+  },
+  watch: {
+    data (newData) {
+      if (newData.length === 0) {
+        return
+      }
+      this.swiperOption.loop = newData.length === 1 ? false : this.loop
+      this.keyId = Math.random()
+    }
+  },
+  created () {
+    this.init()
+  },
+  methods: {
+    init () {
+      this.swiperOption = {
         watchOverflow: true, // 仅有一张图,禁止滑动
         direction: this.direction,
         autoplay: this.interval ? {
@@ -56,7 +80,7 @@ export default {
           disableOnInteraction: false // 如果自动轮播时,有触摸发生就会停止,false就是不停止,那不好吧?
         } : false,
         slidesPerView: 1, // 容器同时显示几张图片
-        loop: this.loop,
+        loop: this.data.length <= 1 ? false : this.loop,
         pagination: { // 分页器?
           el: this.pagination ? '.swiper-pagination' : null,
           clickable: true
@@ -72,4 +96,5 @@ export default {
   width: 100%;
   height: 100%;
 }
+
 </style>

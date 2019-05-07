@@ -3,6 +3,7 @@
   <div class="slider-wrapper">
     <me-loading v-if="!sliders.length"></me-loading>
     <me-slider
+      :data="sliders"
       :direction="direction"
       :loop="loop"
       :interval="interval"
@@ -67,8 +68,12 @@ export default {
     this.getSliders()
   },
   methods: {
+    update () {
+      return this.getSliders()
+    },
+
     getSliders () {
-      getHomeSlider().then(data => {
+      return getHomeSlider().then(data => {
         this.sliders = data
       })
     }
@@ -89,4 +94,5 @@ export default {
 .slider-img {
   height: 100%;
 }
+
 </style>
