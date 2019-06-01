@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>submit</title>
+</head>
+<body>
+<fieldset>
+  <legend>submit</legend>
+  <ul id="data">
+    <li>
+      <div>
+        <span>Age</span><span>123</span>
+      </div>
+      <div>
+        <span>Age</span><span>123</span>
+      </div>
+    </li>
+  </ul>
+  <ol id="data_list">
+    <li>
+      123
+    </li>
+  </ol>
+</fieldset>
+
+<script>
+  (function(window, document) {
+    var storage = window.localStorage
+    var doc = document;
+    var data = JSON.parse(storage.getItem('storage-content'))
+
+    var el = 
+              `
+            <li>
+              <span>$title</span>:<span>$value</span>
+            </li>
+              `;
+    function getOthers (str) {
+      var array = data[0]
+    }
+    var str = ''
+    data[0].checkbox.forEach(({key, value}, index) => {
+      if (typeof value === 'object') {
+        key.forEach((it, i) => {
+          str += el.replace('$title', key[i].split(' (')[0])
+                   .replace('$value', value[i]);
+        })
+        return
+      }
+      str += el.replace('$title', key)
+               .replace('$value', value);
+    })
+    doc.querySelector('#data').innerHTML = str
+    var el2 =
+            `
+            <li>
+              <div><span>$title</span></div>
+              <div><span>已选:</span>$on</div>
+              <div><span>未选:</span>$off</div>
+            </li>
+            <li>
+              <div><span>$andtitle</span></div>
+              <div><span>$name</span></div>
+            </li>
+            <li>
+              <div><span>$ytitle</span></div>
+              <div><span>$yname</span></div>
+            </li>
+            `;
+    function getOn (boole) {
+      var str = '';
+      var i = 0;
+      data[1].checkbox.forEach(({key, value}, index) => {
+        if (value === boole) {
+          i++
+          var _str = '';
+          if (i > 1) {
+            _str = `&nbsp;&nbsp;,<span>$key</span>`;
+          } else {
+            _str = `&nbsp;&nbsp;<span>$key</span>`;
+          }
+
+          str += _str.replace('$key', key)
+        }
+      })
+      return str
+    }
+    function getName () {
+      var str = ''
+      if (data[2].checkbox.every(({value}) => value === true) && data[3].checkbox.every(({value}) => value === true)) {
+        str = 'congratulations, you have already have some idea about renewable energy.';
+      } else {
+        str = 'exactly, all advantages and disadvantages listed in the form all belongs to the renewable energy.';
+      }
+      return str
+    }
+    function getYname () {
+      var str = ''
+      var datas = data[data.length - 1];
+      var index = datas.checkbox.findIndex(({value}) => value === true);
+      switch(datas.checkbox[index].key) {
+        case 'Yes':
+        str = 'let\'s do something for the earth and our descendants';
+        break;
+        case 'No':
+        str = 'not only work in renewable energy, we also can do something in our lives from some details.';
+        break;
+        case 'Not sure':
+        str = 'just be familiar with the renewable energy, you will find out in the future.';
+      }
+      return str
+    }
+    var sca = el2.replace('$on', getOn(true))
+                 .replace('$title', data[1].title)
+                 .replace('$off', getOn(false))
+                 .replace('$andtitle', `${data[2].title} ---and--- ${data[3].title}`)
+                 .replace('$name', getName())
+                 .replace('$ytitle', data[data.length - 1].title)
+                 .replace('$yname', getYname())
+    doc.querySelector('#data_list').innerHTML = sca
+  })(window, document)
+</script>
+</body>
+</html>

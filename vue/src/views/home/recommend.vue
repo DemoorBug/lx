@@ -45,19 +45,26 @@ export default {
     MeLoading
   },
   methods: {
+    // API
+    update () {
+      return this.getRecommend()
+    },
     getRecommend () {
       // 获取第几条，总共有多少条，如果获取的条数大于总共条目，则停止请求
       if (this.curPage > this.totalPage) {
-        return
+        return Promise.reject(new Error('错误'))
       }
-      getHomeRecommend(this.curPage).then(data => {
-        if (data) {
-          this.curPage++
-          this.totalPage = data.totalPage
-          // this.recommends = this.recommends.concat(data.itemList)
-          this.recommends = [ ...this.recommends, ...data.itemList ]
-          this.$emit('loading', this.recommends)
-        }
+      return getHomeRecommend(this.curPage).then(data => {
+        return new Promise(resolve => {
+          if (data) {
+            this.curPage++
+            this.totalPage = data.totalPage
+            // this.recommends = this.recommends.concat(data.itemList)
+            this.recommends = [ ...this.recommends, ...data.itemList ]
+            this.$emit('loading', this.recommends)
+            resolve()
+          }
+        })
       })
     }
   }

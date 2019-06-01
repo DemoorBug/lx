@@ -43,13 +43,6 @@ const getHomeSlider = () => {
         }
       ]
     })
-    .then(data => {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(data)
-        }, 1000)
-      })
-    })
 }
 // 获取列表数据
 const getHomeRecommend = (page = 1, psize = HOME_RECOMMEND_PAGE_SIZE) => {
@@ -69,12 +62,6 @@ const getHomeRecommend = (page = 1, psize = HOME_RECOMMEND_PAGE_SIZE) => {
     if (err) {
       console.log(err)
     }
-  }).then(data => {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(data)
-      }, 1000)
-    })
   })
 }
 

@@ -5,15 +5,17 @@
         <el-input v-model="input" placeholder="请输入账号" class="login-input"></el-input>
         <el-input placeholder="请输入密码" v-model="password" class="password" show-password></el-input>
       </div>
+      <el-button @click="fa">验证码</el-button>
       <el-button type="primary" @click="open">登陆</el-button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'Login',
-  data() {
+  data () {
     return {
       input: '',
       password: ''
@@ -24,6 +26,15 @@ export default {
       this.$message({
         message: '请输入密码',
         type: 'warning'
+      })
+    },
+    fa () {
+      axios.get('/ai/login').then(res => {
+        console.log(res)
+        this.$message({
+          message: '请求成功',
+          type: 'success'
+        })
       })
     }
   }

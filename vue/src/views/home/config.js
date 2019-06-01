@@ -4,6 +4,9 @@ const sliderOptions = {
   interval: 3000,
   pagination: true
 }
+
+export const HEADER_TRANSITION_HEIGHT = 100
+
 const navs = [
   {
     linkUrl: 'https://www.imooc.com',

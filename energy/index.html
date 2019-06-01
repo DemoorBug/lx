@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>What do you know about renewable energy?
+    </title>
+    <style>
+      .color {
+        animation: mymove .4s linear 2
+      }
+      @keyframes mymove
+      {
+        from {color: red;}
+        to {color:#fff;}
+      }
+    </style>
+</head>
+<body>
+    <form id="customer" action="submit.html">
+        <fieldset>
+            <legend>Your details</legend>
+            <ol>
+                <li>
+                   <label for="Age">Age</label>
+                   <select id="Age" required>
+                       <option value="">None</option>
+					             <option>&lt; 0-10</option>
+                       <option>&lt; 10-20</option>
+                       <option>&lt; 20-30</option>
+                       <option>&lt; 30-40</option>
+                       <option>&gt; 40-50</option>
+					             <option>&gt; 50 and above</option>
+                  </select>
+
+                </li>
+				 <li>
+                   <label for="Gender">Gender</label>
+                   <select id="Gender" required>
+                       <option>None</option>
+                       <option>&lt; Male</option>
+                       <option>&lt; Female</option>
+
+                  </select>
+
+                </li>
+				<li>
+                   <label for="suburb" class="question">Suburb (if Australia):</label>
+					<input type="text" class="input" id="suburb" required="" />
+
+					<label for="state" class="question">State (if Australia):</label>
+					<input type="text" class="input" id="state" required="" />
+                </li>
+            </ol>
+        </fieldset>
+        <fieldset class="form-inner">
+
+			<legend>Basic Knowledge</legend>
+			<label for="usage" class="question">What do you know about renewable energy?</label>
+			<ol>
+
+                <li>
+
+                    <input id="Not familiar with" name="levelTypes" type="radio" />
+					<label class="level" for="Not familiar with">Never headed about it</label>
+                </li>
+                <li>
+
+                    <input id="A little" name="levelTypes" type="radio" />
+					<label class="level" for="A little">A little</label>
+                </li>
+                <li>
+
+                    <input id="Very familiar with" name="levelTypes" type="radio" />
+					<label class="level" for="Very familiar with">Very familiar with</label>
+                </li>
+			 </ol>
+			 <label for="usage" class="question">Which of the following energy(s) is/are renewable energy?</label>
+			 <ol>
+					<li>
+						<input type="checkbox" id="water" name="energy" />
+						<label class="energy" for="water">Hydroenergy</label>
+					</li>
+					<li>
+						<input type="checkbox" id="coal" name="energy" />
+						<label class="energy" for="coal">Coal</label>
+					</li>
+					<li>
+						<input type="checkbox" id="solar" name="energy" />
+						<label class="energy" for="solar">The solar energy</label>
+					</li>
+					<li>
+						<input type="checkbox" id="Nuclear" name="energy" />
+						<label class="energy" for="Nuclear">Nuclear energy</label>
+					</li>
+					<li>
+						<input type="checkbox" id="wind" name="energy" />
+						<label class="energy" for="wind">Wind energy</label>
+					</li>
+			</ol>
+			 <label for="usage" class="question">What are the advantages of renewable energy compared with traditional energy?</label>
+			 <ol>
+					<li>
+						<input type="checkbox" id="Inexhaustible" name="adv" />
+						<label class="adv" for="Inexhaustible">Inexhaustible</label>
+					</li>
+					<li>
+						<input type="checkbox" id="Clean" name="adv" />
+						<label class="adv" for="Clean">Clean</label>
+					</li>
+					<li>
+						<input type="checkbox" id="Cheap" name="adv" />
+						<label class="adv" for="Cheap">Cheap</label>
+					</li>
+					<li>
+						<input type="checkbox" id="Science" name="adv" />
+						<label class="adv" for="Science">Science</label>
+					</li>
+			</ol>
+			<label for="usage" class="question">What are the disadvantages of renewable energy compared with traditional energy?</label>
+			 <ol>
+					<li>
+						<input type="checkbox" id="Pollution" name="disadv" />
+						<label class="disadv" for="Pollution">Pollution of the environment</label>
+					</li>
+					<li>
+						<input type="checkbox" id="conversion" name="disadv" />
+						<label class="disadv" for="conversion">Low conversion rate</label>
+					</li>
+					<li>
+						<input type="checkbox" id="penetration" name="disadv" />
+						<label class="disadv" for="penetration">Low penetration</label>
+					</li>
+					<li>
+						<input type="checkbox" id="impacts" name="disadv" />
+						<label class="disadv" for="impacts">Weather and environmental impacts</label>
+					</li>
+			</ol>
+
+			 <label for="usage" class="question">Which way(s) do you know about the renewable energy？</label>
+			 <ol>
+					<li>
+						<input type="checkbox" id="books" name="way" />
+						<label class="way" for="books">Books</label>
+					</li>
+					<li>
+						<input type="checkbox" id="newspaper" name="way" />
+						<label class="way" for="newspaper">Newspaper</label>
+					</li>
+					<li>
+						<input type="checkbox" id="radio" name="way" />
+						<label class="way" for="radio">Radio</label>
+					</li>
+					<li>
+						<input type="checkbox" id="Internet" name="way" />
+						<label class="way" for="Internet">Internet</label>
+					</li>
+					<li>
+						<input type="checkbox" id="Conversation" name="way" />
+						<label class="way" for="Conversation">Daily Conversation</label>
+					</li>
+			</ol>
+
+			<label for="usage" class="question">Do you think renewable energy technology is mature?</label>
+			<ol>
+
+                <li>
+
+                    <input id="Mature" name="MatureType" type="radio" />
+					<label class="Mature" for="Mature">Mature</label>
+                </li>
+                <li>
+
+                    <input id="notMature" name="MatureType" type="radio" />
+					<label class="Mature" for="notMature">Not Mature</label>
+                </li>
+                <li>
+
+                    <input id="improved" name="MatureType" type="radio" />
+					<label class="Mature" for="improved">Should be improved</label>
+                </li>
+			 </ol>
+
+		</fieldset>
+		<fieldset class="form-inner">
+
+			<legend>Renewable energy in Australia</legend>
+			<label for="usage" class="question">Do you know about the application of renewable energy in Australia?</label>
+            <ol>
+                <li>
+
+                    <input id="Not familiar with" name="levelTypea" type="radio" />
+					<label class="level" for="Not familiar with">Never headed about it</label>
+                </li>
+                <li>
+
+                    <input id="A little" name="levelTypea" type="radio" />
+					<label class="level" for="A little">A little</label>
+                </li>
+                <li>
+
+                    <input id="Very familiar with" name="levelTypea" type="radio" />
+					<label class="level" for="Very familiar with">Very familiar with</label>
+                </li>
+
+		    </ol>
+			<label for="usage" class="question">What impact will renewable energy have on Australia's economic development?</label>
+            <ol>
+                <li>
+
+                    <input id="Positive" name="influenceType" type="radio" />
+					<label class="influence" for="Positive">Positive</label>
+                </li>
+                <li>
+					<input id="Negative" name="influenceType" type="radio" />
+                    <label class="influence" for="Negative">Negative</label>
+
+                </li>
+                <li>
+                    <input id="no" name="influenceType" type="radio" />
+					<label class="influence" for="">No effect</label>
+                </li>
+
+		    </ol>
+			<label for="usage" class="question">How polluted is the air in your city?</label>
+            <ol>
+                <li>
+
+                    <input id="serious" name="leverTypec" type="radio" />
+					<label class="level" for="serious">Very serious</label>
+                </li>
+                <li>
+					<input id="generally" name="leverTypec" type="radio" />
+                    <label class="level" for="generally">Generally serious</label>
+
+                </li>
+                <li>
+                    <input id="Light" name="leverTypec" type="radio" />
+					<label class="level" for="light">Light pollution</label>
+                </li>
+				<li>
+
+                    <input id="good" name="leverTypec" type="radio" />
+					<label class="level" for="good">The air quality is very good</label>
+                </li>
+			 </ol>
+			<label for="usage" class="question">If possible, would you like to work in renewable energy?</label>
+            <ol>
+                <li>
+
+                    <input id="Yes" name="yesnoType" type="radio" />
+					<label class="yesno" for="Yes">Yes</label>
+                </li>
+                <li>
+					<input id="No" name="yesnoType" type="radio" />
+                    <label class="yesno" for="No">No</label>
+
+                </li>
+                <li>
+                    <input id="Not sure" name="yesnoType" type="radio" />
+					<label class="yesno" for="Not sure">Not sure</label>
+                </li>
+			 </ol>
+        </fieldset>
+
+        <fieldset>
+            <button type="submit" class="submit">Submit</button>
+            <button type="reset">Clear</button>
+        </fieldset>
+    </form>
+    <script type="text/javascript">
+      (function (window, document) {
+        var doc = document;
+        var formInner = doc.querySelectorAll('.form-inner ol');
+        var question = doc.querySelectorAll('.form-inner .question')
+        var form = doc.querySelector('form')
+
+        // Basic Knowledge and Renewable energy in Australia
+        form.addEventListener('submit', function(e) {
+          e.preventDefault()
+          var arr = [];
+          var pitchArr = [];
+          formInner.forEach((item, index) => {
+            arr.push({
+              title: question[index].innerText,
+              checkbox: []
+            })
+            item.querySelectorAll('li').forEach((itm, i) => {
+              var checked = itm.querySelector('input').checked
+              var level = itm.querySelector('label').innerText
+
+              arr[index].checkbox.push({
+                key: level,
+                value: checked
+              })
+
+
+            })
+            // 必选判断
+            var pitch = arr[index].checkbox.find(({value}) => {
+              return value === true
+            })
+            if (pitch) {
+              pitchArr.push(true)
+            } else {
+              pitchArr.push(false)
+            }
+            
+          })
+
+
+          // Your details
+          arr.unshift({
+            title: 'Your details',
+            checkbox: []
+          })
+          var unformInner = doc.querySelector('ol').querySelectorAll('li')
+          unformInner.forEach((item) => {
+            var checked;
+            var checkedArr = [];
+            var levelArr = [];
+            var level = item.querySelector('label').innerText
+            if (item.querySelector('select')) {
+              checked = item.querySelector('select').value
+            } else {
+              if (item.querySelectorAll('input').length > 1) {
+                item.querySelectorAll('input').forEach((it, index) => {
+                  checkedArr.push(item.querySelectorAll('input')[index].value)
+                  levelArr.push(item.querySelectorAll('label')[index].innerText)
+                })
+                checked = checkedArr
+                level = levelArr
+                console.log(checked)
+              } else {
+                checked = item.querySelector('input').value
+              }
+            }
+            arr[0].checkbox.push({
+              key: level,
+              value: checked
+            })
+          })
+
+          // 必选判断
+          if (pitchArr.includes(false)) {
+            var el = pitchArr.findIndex(pit => pit === false)
+            var err = question[el]
+            
+            err.scrollIntoView()
+            err.className = 'color'
+            err.addEventListener('animationend', function() {
+              err.className = ''
+            })
+            alert(`请在：${arr[el].title}中选择一项`)
+            return
+          } else { //storage
+            var storage = window.localStorage
+            storage.setItem('storage-content', JSON.stringify(arr))
+            // submit
+            this.submit()
+          }
+        })
+      })(window, document)
+    </script>
+</body>
+</html>

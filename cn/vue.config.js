@@ -6,6 +6,7 @@ function resolve (dir) {
 
 module.exports = {
   productionSourceMap: false,
+  publicPath: './',
   lintOnSave: true,
   chainWebpack: (config) => {
     config.resolve.alias

@@ -11,20 +11,20 @@
   </transition>
 </template>
 <script>
-  export default {
-    name: 'MeBacktop',
-    props: {
-      visible: {
-        type: Boolean,
-        default: false
-      }
-    },
-    methods: {
-      backToTop() {
-        this.$emit('backtop');
-      }
+export default {
+  name: 'MeBacktop',
+  props: {
+    visible: {
+      type: Boolean,
+      default: false
     }
-  };
+  },
+  methods: {
+    backToTop () {
+      this.$emit('backtop')
+    }
+  }
+}
 </script>
 
 <style lang="less" scoped>
