@@ -14,6 +14,18 @@ class App extends React.Component {
   render () {
     return <TodoItemUi state={this.state}/>
   }
+  componentDidMount() {
+    store.dispatch({
+      type: 'my-sagas'
+    })
+    // axios.get('http://localhost:3000/mock/index.json').then(data => {
+    //   data = data.data.data
+    //   store.dispatch({
+    //     type: 'getIndex_app',
+    //     data
+    //   })
+    // })
+  }
 }
 
 export default App;

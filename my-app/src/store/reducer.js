@@ -20,5 +20,11 @@ export default (state = defaultState, action) => {
     newState.list.splice(action.value, 1)
     return newState
   }
+  if (action.type === 'getIndex_app') {
+    const newState = JSON.parse(JSON.stringify(state))
+    console.log(action.data)
+    newState.list = action.data
+    return newState
+  }
   return state
 }
