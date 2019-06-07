@@ -46,7 +46,17 @@ export const NavItem = styled.div`
 export const SearchWrapper = styled.div`
   float: left;
   position: relative;
+  &.focused {
+    .nav-search {
+      width: 180px;
+    }
+    .iconfont {
+      background-color: #a99f9f;
+      color: #fff;
+    }
+  }
   .iconfont {
+    transition: all .2s;
     position: absolute;
     right: 5px;
     bottom: 5px;
@@ -60,6 +70,7 @@ export const SearchWrapper = styled.div`
 export const NavSearch = styled.input.attrs({
   placeholder: '搜索'
 })`
+  transition: all .2s;
   width: 160px;
   padding: 0 20px;
   margin: 9px 0 0 20px;
