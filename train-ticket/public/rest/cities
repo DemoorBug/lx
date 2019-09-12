@@ -1,3 +1,17 @@
 {
-  reset: 200
+  "cityList": [{
+    "title": "X",
+    "citys": [{
+      "name": "西安"
+    }, {
+      "name": "西南"
+    }]
+  }, {
+    "title": "B",
+    "citys": [{
+      "name": "北京"
+    }, {
+      "name": "北山"
+    }]
+  }]
 }

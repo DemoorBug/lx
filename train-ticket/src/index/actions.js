@@ -75,6 +75,8 @@ export function setSelectedCity(city) {
     } else {
       dispatch(setTo(city))
     }
+
+    dispatch(hideCitySelector())
   }
 }
 
@@ -116,12 +118,11 @@ export function fetchCityData() {
         return
       }
     }
-
     fetch('/rest/cities?_' + Date.now())
       .then(res => res.json())
       .then(cityData => {
+        console.log(cityData);
         dispatch(setCityData(cityData))
-
         localStorage.setItem(
           'city_data_cache',
           JSON.stringify({
