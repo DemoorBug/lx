@@ -2,11 +2,14 @@ import React, {
   useState,
   useMemo,
   useEffect,
-  memo
+  memo,
+  useCallback
 } from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import './CitySelector.css'
+
+// 搜索这里因为要起服务器，所以没有搞，到时候把起服务器的node代码放到public/文件夹下
 
 const CityItem = memo(function CityItem(props) {
     const {
@@ -34,12 +37,12 @@ const CitySection = memo(function CitySection(props) {
     } = props;
 
     return (
-        <ul className="city-ul">
-            <li className="city-li" key="title" data-cate={title}>
+        <ul className="city-ul" data-cate={title}>
+            <li className="city-li" key="title">
                 { title }
             </li>
             {
-                cities.map(city => {
+                cities.map((city, index) => {
                     return (
                         <CityItem
                             key={city.name}
@@ -53,18 +56,44 @@ const CitySection = memo(function CitySection(props) {
     );
 });
 
+
 CitySection.propTypes = {
     title: PropTypes.string.isRequired,
     cities: PropTypes.array,
     onSelect: PropTypes.func.isRequired,
 };
 
+const alphabet = Array.from(new Array(26), (eie, index) => {
+  return String.fromCharCode(65 + index)
+})
+
+const AlphaIndex = memo(function AlphaIndex(props) {
+  const {
+    onClick,
+    alpha
+  } = props
+  return (
+    <div
+      className="city-index-item"
+      onClick={() => onClick(alpha)}
+      >
+      { alpha }
+    </div>
+  )
+})
+
+AlphaIndex.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  alpha: PropTypes.string.isRequired
+}
+
 const CityList = memo(function CityList(props) {
     const {
         sections,
-        onSelect
+        onSelect,
+        onClick
     } = props;
-
+    console.log(sections);
     return (
         <div className="city-list">
             <div className="city-cate">
@@ -74,12 +103,25 @@ const CityList = memo(function CityList(props) {
                             <CitySection
                                 key={section.title}
                                 title={section.title}
-                                cities={section.citys}
+                                cities={section.cities}
                                 onSelect={onSelect}
                             />
                         );
                     })
                 }
+            </div>
+            <div className="city-index">
+              {
+                alphabet.map(alpha => {
+                  return (
+                    <AlphaIndex
+                      key={alpha}
+                      alpha={alpha}
+                      onClick={onClick}
+                      />
+                  )
+                })
+              }
             </div>
         </div>
     );
@@ -87,9 +129,82 @@ const CityList = memo(function CityList(props) {
 
 CityList.propTypes = {
     sections: PropTypes.array.isRequired,
-    onSelect: PropTypes.func.isRequired
+    onSelect: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired
 };
 
+const SuggestItem = memo(function SuggestItem(props) {
+  const {
+    name,
+    onClick
+  } = props;
+
+  return (
+    <li className="city-suggest-li" onClick={() => onClick(name)}>{name}</li>
+  )
+})
+
+SuggestItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
+}
+
+const Suggest = memo(function Suggest(props) {
+  const {
+    searchKey,
+    onSelect
+  } = props
+
+  const [result, setResult] = useState([])
+
+  useEffect(() => {
+    fetch('/rest/search?key=' + encodeURIComponent(searchKey))
+      .then(res => res.json())
+      .then(data => {
+        const {
+          result,
+          searchKey: sKey
+        } = data
+
+        if (sKey === searchKey) {
+          setResult(result)
+        }
+      })
+  }, [searchKey])
+
+  // 用useMemo优化
+  // const fallBackResult = result.length ? result : [{
+  //   display: searchKey
+  // }]
+
+  const fallBackResult = useMemo(() => {
+    if (result.length) {
+      return result
+    } else {
+      return [{
+        display: searchKey
+      }]
+    }
+  }, [result, searchKey])
+
+  return (
+    <div className="city-suggest">
+      <ul className="city-suggest-ul">
+        {
+          fallBackResult.map(item => {
+            return (
+              <SuggestItem
+                key={item.display}
+                name={item.display}
+                onClick={onSelect}
+              />
+            )
+          })
+        }
+      </ul>
+    </div>
+  )
+})
 
 const CitySelector =  memo(function CitySelector(props) {
   const {
@@ -105,6 +220,10 @@ const CitySelector =  memo(function CitySelector(props) {
 
   const key = useMemo(() => searchKey.trim(), [searchKey])
 
+  const onClick = useCallback(alpha => {
+    document.querySelector(`[data-cate='${alpha}']`)
+      .scrollIntoView()
+  }, [])
   useEffect(() => {
     if (!show || cityData || isLoading) {
       return
@@ -123,6 +242,7 @@ const CitySelector =  memo(function CitySelector(props) {
               <CityList
                   sections={cityData.cityList}
                   onSelect={onSelect}
+                  onClick={onClick}
               />
           );
       }
@@ -164,6 +284,14 @@ const CitySelector =  memo(function CitySelector(props) {
           &#xf063;
         </i>
       </div>
+      {
+        Boolean(key) && (
+          <Suggest
+            searchKey={key}
+            onSelect={key => onSelect(key)}
+          />
+        )
+      }
       { outputCitySections() }
     </div>
   )

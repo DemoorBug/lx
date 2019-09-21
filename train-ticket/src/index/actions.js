@@ -6,6 +6,7 @@ export const ACTION_SET_CITY_DATA = 'CITY_DATA'
 export const ACTION_SET_IS_LOADING_CITY_DATA = 'IS_LOADING_CITY_DATA'
 export const ACTION_SET_IS_DATE_SELECTOR_VISIBLE = 'IS_DATE_SELECTOR_VISIBLE'
 export const ACTION_SET_HIGH_SPEED = 'HIGHSPEED'
+export const ACTION_SET_DEPART_DATE = 'SET_DEPART_DATE';
 
 export function setFrom(from) {
   return {
@@ -102,6 +103,13 @@ export function exchangeFromTo() {
     };
 }
 
+export function setDepartDate(departDate) {
+    return {
+        type: ACTION_SET_DEPART_DATE,
+        payload: departDate,
+    };
+}
+
 export function fetchCityData() {
   return (dispatch, getState) => {
     const { isLoadingCityData } = getState()
@@ -121,7 +129,6 @@ export function fetchCityData() {
     fetch('/rest/cities?_' + Date.now())
       .then(res => res.json())
       .then(cityData => {
-        console.log(cityData);
         dispatch(setCityData(cityData))
         localStorage.setItem(
           'city_data_cache',
