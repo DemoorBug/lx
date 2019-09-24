@@ -7,6 +7,8 @@ import Header from './Header'
 
 import './DeteSelector.css'
 
+// 这个日期选择组件实在是帅的一批，react居然要拆这么细的组件，日期组件原来这么简单，感觉下一次做就不会有所畏惧了，结尾老师说的注意点，什么鬼，听不明白，hide？
+
 function Day(props) {
   const {
     day,
