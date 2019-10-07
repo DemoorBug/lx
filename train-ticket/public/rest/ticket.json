@@ -1,0 +1,42 @@
+{
+  "datail": {
+    "departTimeStr": "07:15",
+    "arriveTimeStr": "11:47",
+    "arriveDate": 1559836800000,
+    "durationStr": "4小时32分"
+  },
+  "candidates": [{
+    "type": "二等座",
+    "ticketsLeft": "有票",
+    "priceMsg": "443.5",
+    "channels": [{
+      "desc": "含40元c出现保障 快速出票 迅捷无忧",
+      "name": "快速预定"
+    }, {
+      "desc": "出票较慢，高峰期需要等待",
+      "name": "普通预定"
+    }]
+  }, {
+    "type": "一等座",
+    "ticketsLeft": "有票",
+    "priceMsg": "623",
+    "channels": [{
+      "desc": "含40元c出现保障 快速出票 迅捷无忧",
+      "name": "快速预定"
+    }, {
+      "desc": "出票较慢，高峰期需要等待",
+      "name": "普通预定"
+    }]
+  }, {
+    "type": "商务",
+    "ticketsLeft": "有票",
+    "priceMsg": "946",
+    "channels": [{
+      "desc": "含40元c出现保障 快速出票 迅捷无忧",
+      "name": "快速预定"
+    }, {
+      "desc": "出票较慢，高峰期需要等待",
+      "name": "普通预定"
+    }]
+  }]
+}

@@ -183,14 +183,14 @@ export function setSearchParsed(searchParsed) {
 
 export function nextDate() {
   return (dispatch, getState) => {
-    const { departDate } = getState
+    const { departDate } = getState()
     // departDate必须是0时刻，不然就会出错，所以要用h0函数，86400毫秒 * 1000刚好是一天，花里胡哨的
     dispatch(setDepartDate(h0(departDate) + 86400 * 1000))
   }
 }
 export function prevDate() {
   return (dispatch, getState) => {
-    const { departDate } = getState
+    const { departDate } = getState()
     // departDate必须是0时刻，不然就会出错，所以要用h0函数，86400毫秒 * 1000刚好是一天，花里胡哨的
     dispatch(setDepartDate(h0(departDate) - 86400 * 1000))
   }

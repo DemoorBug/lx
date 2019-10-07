@@ -59,6 +59,9 @@ export default {
     switch(type) {
       case ACTION_SET_HIGHSPEED:
         return payload;
+      case ACTION_SET_CHECKEDTRAINTYPES:
+        const checkedTrainTypes = payload
+        return Boolean(checkedTrainTypes[0] && checkedTrainTypes[1])
       default:
     }
     return state
@@ -122,6 +125,19 @@ export default {
     switch(type) {
       case ACTION_SET_CHECKEDTRAINTYPES:
         return payload;
+      case ACTION_SET_HIGHSPEED:
+        // 了解了，很nice 啊，原来是这样
+        const highSpeed = payload
+        const newCheckedTrainTypes = {...state}
+        if (highSpeed) {
+          newCheckedTrainTypes[0] = true
+          newCheckedTrainTypes[1] = true
+        } else {
+          delete newCheckedTrainTypes[0]
+          delete newCheckedTrainTypes[1]
+        }
+
+        return newCheckedTrainTypes
       default:
     }
     return state
