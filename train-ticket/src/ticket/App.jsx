@@ -154,17 +154,22 @@ function App(props) {
       </div>
       <div className="detail-wrapper">
         {
-          isLoad && <Detail
-            departDate={departDate}
-            arriveDate={arriveDate}
-            departTimeStr={departTimeStr}
-            arriveTimeStr={arriveTimeStr}
-            trainNumber={trainNumber}
-            departStation={departStation}
-            arriveStation={arriveStation}
-            durationStr={durationStr}
-            {...detailCbs}
-          />
+          isLoad &&
+            <Detail
+              departDate={departDate}
+              arriveDate={arriveDate}
+              departTimeStr={departTimeStr}
+              arriveTimeStr={arriveTimeStr}
+              trainNumber={trainNumber}
+              departStation={departStation}
+              arriveStation={arriveStation}
+              durationStr={durationStr}
+              {...detailCbs}
+            >
+              <span className="left"></span>
+              <span className="schedule" onClick={() => detailCbs.toggleIsScheduleVisible()}>时刻表</span>
+              <span className="right"></span>
+            </Detail>
         }
       </div>
       <TrainContext.Provider value={{trainNumber, departStation, arriveStation, departDate}}>
