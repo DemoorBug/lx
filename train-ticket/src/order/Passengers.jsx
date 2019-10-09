@@ -6,20 +6,102 @@ import './Passengers.css'
 
 const Passenger = memo(function (props) {
   const {
-    id
+    id,
+    name,
+    followAdult,
+    ticketType,
+    licenceNo,
+    gender,
+    birthday,
+    onRemove,
+    onUpdate
   } = props
+  const isAdult = ticketType === 'adult'
   return (
-    <li>
-      { props.id }
+    <li className="passenger">
+      <i className="delete" onClick={() => onRemove(id)}>
+        -
+      </i>
+      <ol className="items">
+        <li className="item">
+          <label className="label name">姓名</label>
+          <input type="text" className="input name"
+            placeholder="乘客姓名"
+            value={name}
+            onChange={e => onUpdate(id, { name: e.target.value })}
+          />
+          <label className="ticket-type">
+            { isAdult ? '成人票' : '儿童票'}
+          </label>
+        </li>
+        { isAdult &&
+          <li className="item">
+            <label className="label licenceNo">身份证</label>
+            <input type="text" className="input licenceNo"
+              placeholder="证件号码"
+              value={licenceNo}
+              onChange={e => onUpdate(id, { licenceNo: e.target.value })}
+              />
+          </li>
+        }
+        { !isAdult &&
+          <li className="item arrow">
+            <label className="label gender">性别</label>
+            <input type="text" className="input gender"
+              placeholder="请选择"
+              value={
+                gender === 'male'
+                ? '男'
+                : gender === 'female'
+                  ? '女'
+                  : ''
+              }
+              readOnly
+              />
+          </li>
+        }
+        { !isAdult &&
+          <li className="item">
+            <label className="label birthday">出发日期</label>
+            <input type="text" className="input birthday"
+              placeholder="如 19951015"
+              value={birthday}
+              onChange={e => onUpdate(id, { birthday: e.target.value })}
+              />
+          </li>
+        }
+        { !isAdult &&
+          <li className="item arrow">
+            <label className="label followAdult">同行成人</label>
+            <input type="text" className="input followAdult"
+              placeholder="请选择"
+              value={followAdult}
+              readOnly
+              />
+          </li>
+        }
+      </ol>
     </li>
   )
 })
+
+Passenger.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  followAdult: PropTypes.number,
+  ticketType: PropTypes.string.isRequired,
+  licenceNo: PropTypes.string,
+  gender: PropTypes.string,
+  birthday: PropTypes.string,
+}
 
 const Passengers = memo(function Passengers (props) {
   const {
     passengers,
     createAdult,
-    createChild
+    createChild,
+    onRemove,
+    onUpdate
   } = props
   return (
     <div className="passengers">
@@ -29,6 +111,8 @@ const Passengers = memo(function Passengers (props) {
             return (
               <Passenger
                 {...passenger}
+                onRemove={onRemove}
+                onUpdate={onUpdate}
                 key={passenger.id}
                 />
             )

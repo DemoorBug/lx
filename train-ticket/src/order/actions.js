@@ -164,7 +164,8 @@ export function createAdult() {
 export function createChild() {
   return (dispatch, getState) => {
     const { passengers } = getState()
-    console.error('这里明天研究，扛不住了，研究完在进行下一节，并且做笔记');
+    // 研究完成了，就那些东西，以前都搞过，久了没搞生疏了
+    // console.error('这里明天研究，扛不住了，研究完在进行下一节，并且做笔记');
     let adultFound = null
 
     for (let passenger of passengers) {
@@ -189,11 +190,46 @@ export function createChild() {
         id: ++passengerIdSeed,
         gender: 'none',
         birthday: '',
-        followAdult: '',
+        followAdult: adultFound,
         name: '',
-        ticketType: 'adult',
+        ticketType: 'child',
         seat: 'Z'
       }
     ]))
+  }
+}
+export function onRemove(id) {
+  return (dispatch, getState) => {
+    const { passengers } = getState()
+    const remove = passengers.filter(passenger => {
+      // 第二个判断条件是，如果成人被删除，儿童也要被删除
+      return passenger.id !== id && passenger.followAdult !== id
+    })
+    console.log(remove);
+    dispatch(setPassengers(remove))
+  }
+}
+export function onUpdate(id, data) {
+  return (dispatch, getState) => {
+    const { passengers } = getState()
+    // const newPassengers = passengers.find(passenger => {
+    //   return passenger.id !== id
+    // })
+    // dispatch(setPassengers(newPassengers))
+    for (let i = 0; i < passengers.length; ++i) {
+      if (passengers[i].id === id) {
+        // 这里必须浅拷贝一份，严格来说要深拷贝的，为什么不提呢，还是说不重要?
+        const newPassengers = [...passengers]
+        // newPassengers[i].name = name
+        // 换一种逼格高的写法
+        // 要写这种通用组件，必须这么写，而不是高逼格，上面描述有误
+        newPassengers[i] = Object.assign({}, passengers[i], data)
+        // 另一种写法：
+        // newPassengers[i] = {...passengers[i], ...data}
+        // console.log(newPassengers);
+        dispatch(setPassengers(newPassengers))
+        break
+      }
+    }
   }
 }
