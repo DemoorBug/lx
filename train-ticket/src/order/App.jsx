@@ -16,6 +16,7 @@ import Account from './Account.jsx'
 import Choose from './Choose.jsx'
 import Passengers from './Passengers.jsx'
 import Ticket from './Ticket.jsx'
+import Menu from './Menu.jsx'
 
 import {
   setDepartStation,
@@ -28,7 +29,11 @@ import {
   createAdult,
   createChild,
   onRemove,
-  onUpdate
+  onUpdate,
+  hideMenu,
+  showGenderMenu,
+  showFollowAdultMenu,
+  showTicketTypeMenu
 } from './actions'
 
 function App(props) {
@@ -67,7 +72,7 @@ function App(props) {
     dispatch(setDepartDate(dayjs(date).valueOf()))
     dispatch(setSearchParsed(true))
 
-  }, [])
+  }, [dispatch])
 
 
   useEffect(() => {
@@ -95,6 +100,21 @@ function App(props) {
       createAdult,
       createChild,
       onRemove,
+      onUpdate,
+      showGenderMenu,
+      showFollowAdultMenu,
+      showTicketTypeMenu
+    }, dispatch)
+  }, [dispatch])
+  const menuCbs = useMemo(() => {
+    return bindActionCreators({
+      hideMenu,
+
+    }, dispatch)
+  }, [dispatch])
+
+  const chooseCbs = useMemo(() => {
+    return bindActionCreators({
       onUpdate
     }, dispatch)
   }, [dispatch])
@@ -141,10 +161,22 @@ function App(props) {
         price={price}
         type={seatType}
       />
-    <Passengers
-      passengers={passengers}
-      {...passengersCbs}
-    />
+      <Passengers
+        passengers={passengers}
+        {...passengersCbs}
+      />
+      { passengers.length > 0 &&
+        <Choose
+          passengers={passengers}
+          {...chooseCbs}
+        />
+      }
+      <Account length={passengers.length} price={price}/>
+      <Menu
+        show={isMenuVisible}
+        {...menu}
+        {...menuCbs}
+        />
     </div>
   )
 }

@@ -198,18 +198,17 @@ export function createChild() {
     ]))
   }
 }
-export function onRemove(id) {
+export function onRemove(id, name) {
   return (dispatch, getState) => {
     const { passengers } = getState()
     const remove = passengers.filter(passenger => {
       // 第二个判断条件是，如果成人被删除，儿童也要被删除
-      return passenger.id !== id && passenger.followAdult !== id
+      return passenger.id !== id && passenger.followAdult !== name
     })
-    console.log(remove);
     dispatch(setPassengers(remove))
   }
 }
-export function onUpdate(id, data) {
+export function onUpdate(id, data, keysToBeRemove = []) {
   return (dispatch, getState) => {
     const { passengers } = getState()
     // const newPassengers = passengers.find(passenger => {
@@ -227,9 +226,125 @@ export function onUpdate(id, data) {
         // 另一种写法：
         // newPassengers[i] = {...passengers[i], ...data}
         // console.log(newPassengers);
+
+        for (let key of keysToBeRemove) {
+          delete newPassengers[i][key]
+        }
+
         dispatch(setPassengers(newPassengers))
         break
       }
     }
   }
+}
+export function showMenu(menu) {
+  return (dispatch) => {
+    dispatch(setMenu(menu))
+    dispatch(setIsMenuVisible(true))
+  }
+}
+// 真的帅死了
+export function showGenderMenu(id) {
+  return (dispatch, getState) => {
+    const { passengers } = getState()
+    const passenger = passengers.find(passenger => passenger.id === id)
+
+    if (!passenger) {
+      return
+    }
+    dispatch(showMenu({
+      onPress (gender) {
+        dispatch(onUpdate(id, { gender }))
+        dispatch(hideMenu())
+      },
+      options: [
+        {
+          title: '男',
+          value: 'male',
+          active: 'male' === passenger.gender
+        },
+        {
+          title: '女',
+          value: 'female',
+          active: 'female' === passenger.gender
+        }
+      ]
+    }))
+  }
+}
+
+export function showFollowAdultMenu(id) {
+  return (dispatch, getState) => {
+    const { passengers } = getState()
+    const passenger = passengers.find(passenger => passenger.id === id)
+    if (!passenger) {
+      return
+    }
+    dispatch(showMenu({
+      onPress (followAdult) {
+        dispatch(onUpdate(id, { followAdult }))
+        dispatch(hideMenu())
+      },
+      options: passengers
+        .filter(passenger => passenger.ticketType === 'adult')
+        .map(adult => {
+          return {
+            title: adult.name,
+            value: adult.id,
+            active: adult.id === passenger.followAdult
+          }
+        })
+    }))
+  }
+}
+
+export function showTicketTypeMenu(id) {
+  return (dispatch, getState) => {
+    const { passengers } = getState()
+
+    const passenger = passengers.find(passenger => passenger.id === id)
+
+    if (!passenger) {
+      return
+    }
+    dispatch(showMenu({
+      onPress (ticketType) {
+        if ('adult' === ticketType) {
+          dispatch(onUpdate(id, {
+            ticketType,
+            licenceNo: ''
+          }, ['gender', 'followAdult', 'birthday']))
+        } else {
+          const adult = passengers.find(passenger => {
+            return passenger.ticketType === 'adult' && passenger.id !== id
+          })
+          if (adult) {
+            dispatch(onUpdate(id, {
+              ticketType,
+              gender: '',
+              followAdult: passenger.id - 1,
+              birthday: ''
+            }, ['licenceNo']))
+          } else {
+            alert('没有其他成人乘客')
+          }
+        }
+
+        dispatch(hideMenu())
+      },
+      options: [{
+        title: '成人票',
+        value: 'adult',
+        active: 'adult' === passenger.ticketType
+      }, {
+        title: '儿童票',
+        value: 'child',
+        active: 'child' === passenger.ticketType
+      }]
+    }))
+  }
+}
+
+export function hideMenu() {
+  return setIsMenuVisible(false)
 }
