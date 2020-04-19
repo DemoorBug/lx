@@ -1,0 +1,21 @@
+{
+  "name": "pubg-react-lear",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "start http://localhost:4000 && node start.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^5.9.3"
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^8.0.8",
+    "koa-static": "^5.0.0"
+  }
+}

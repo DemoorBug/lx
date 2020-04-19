@@ -1,0 +1,192 @@
+armor destroy
+black zone ended
+care package land
+care package spawn
+game state periodic
+heal
+item attach
+item detach
+item drop
+item equip
+item pickup
+item pickup from carepackage
+item pickup from lootbox
+item unequip
+item use
+match definition
+match end
+match start
+object destroy
+object interaction
+parachute landing
+phase change
+player attack
+player create
+player destroy breachable wall
+player kill
+player login
+player logout
+player make groggy
+player position
+player revive
+player take damage
+player use throwable
+red zone ended
+swim end
+swim start
+vault start
+vehicle destroy
+vehicle leave
+vehicle ride
+weapon fire count
+wheel destroy
+
+LogArmorDestroy 装甲摧毁 装甲破坏
+{"attackId":3,"fireWeaponStackCount":0,"attacker":{"name":"woshichengguan-","teamId":8,"health":100,"location":{"x":313394.71875,"y":321887.0625,"z":148.36000061035156},"ranking":0,"accountId":"account.d345d8dee7754b0dbc76e5245b27edcd","isInBlueZone":false,"isInRedZone":false,"zone":[]}
+
+LogBlackZoneEnded 黑色区域结束 黑色区域结束
+
+
+LogCarePackageLand 包养地 护理包土地
+
+
+LogCarePackageSpawn 护理包生成 护理包产卵
+{"itemPackage":{"itemPackageId":"Carapackage_RedBox_C","location":{"x":416557.0625,"y":121507.890625,"z":30000},"items":[{"itemId":"Item_Weapon_Mk14_C","stackCount":1,"category":"Weapon","subCategory":"Main","attachedItems":[]},{"itemId":"Item_Ammo_762mm_C","stackCount":30,"category":"Ammunition","subCategory":"None","attachedItems":[]},{"itemId":"Item_Ammo_762mm_C","stackCount":30,"category":"Ammunition","subCategory":"None","attachedItems":[]},{"itemId":"Item_Armor_C_01_Lv3_C","stackCount":1,"category":"Equipment","subCategory":"Vest","attachedItems":[]},{"itemId":"Item_Head_G_01_Lv3_C","stackCount":1,"category":"Equipment","subCategory":"Headgear","attachedItems":[]},{"itemId":"Item_Back_C_01_Lv3_C","stackCount":1,"category":"Equipment","subCategory":"Backpack","attachedItems":[]}]},"common":{"isGame":2},"_D":"2020-02-23T11:24:02.882Z","_T":"LogCarePackageSpawn"}
+
+LogGameStatePeriodic 博弈状态周期 游戏状态周期性
+{"gameState":{"elapsedTime":688,"numAliveTeams":21,"numJoinPlayers":88,"numStartPlayers":93,"numAlivePlayers":62,"safetyZonePosition":{"x":544268.9375,"y":132441.15625,"z":0},"safetyZoneRadius":202901.53125,"poisonGasWarningPosition":{"x":550020.0625,"y":133276.25,"z":0},"poisonGasWarningRadius":121740.921875,"redZonePosition":{"x":422306.59375,"y":482028.3125,"z":0},"redZoneRadius":50000,"blackZonePosition":{"x":0,"y":0,"z":0},"blackZoneRadius":0},"common":{"isGame":2},"_D":"2020-02-23T11:24:02.264Z","_T":"LogGameStatePeriodic"}
+
+LogHeal 治愈 愈合
+
+
+LogItemAttach 项目附加 项目附
+
+
+LogItemDetach 项目分离 项目分离
+
+
+LogItemDrop 项目删除 物品掉落
+
+
+LogItemEquip 物品装备 项目装备
+
+
+LogItemPickup 提货 物品领取
+
+
+LogItemPickupFromCarepackage 从carepackage取货 从护理包装中取出物品
+
+
+LogItemPickupFromLootbox 从战利品箱取货 从战利品箱中拾取物品
+
+
+LogItemUnequip 项目调整 项目取消装备
+
+
+LogItemUse 物品使用 项目用途
+
+
+LogMatchDefinition 匹配定义 比赛定义
+
+
+LogMatchEnd 匹配结束 比赛结束
+
+
+LogMatchStart 匹配开始 比赛开始
+
+
+LogObjectDestroy 物品销毁 物体破坏
+
+
+LogObjectInteraction 对象交互 对象互动
+
+
+LogParachuteLanding 降落伞着陆 降落伞降落
+
+
+LogPhaseChange 相变 相变
+
+
+LogPlayerAttack 玩家攻击 玩家进攻
+
+
+LogPlayerCreate 玩家创建 玩家创建
+
+
+LogPlayerDestroyBreachableWall 玩家摧毁破墙 玩家摧毁易破墙
+
+
+LogPlayerKill 玩家杀戮 玩家杀死
+
+
+LogPlayerLogin 玩家登录 玩家登录
+
+
+LogPlayerLogout 玩家退出 玩家登出
+
+
+LogPlayerMakeGroggy 玩家使头昏眼花 播放器让昏昏欲睡
+
+
+LogPlayerPosition 玩家位置 球员位置
+
+
+LogPlayerRevive 玩家复活 玩家复活
+
+
+LogPlayerTakeDamage 玩家受到伤害 玩家受到伤害
+
+
+LogPlayerUseThrowable 玩家使用投掷物 球员使用投掷
+
+
+LogRedZoneEnded 红色区域结束 红色区域结束
+
+
+LogSwimEnd 游泳终点 游完
+
+
+LogSwimStart 游泳开始 游泳开始
+
+
+LogVaultStart 保险库开始 保管库启动
+
+
+LogVehicleDestroy 车辆销毁 车辆销毁
+
+
+LogVehicleLeave 车辆离开 车辆离开
+
+
+LogVehicleRide 车辆行驶 车辆行驶
+
+
+LogWeaponFireCount 武器射击计数 武器射击数
+
+
+LogWheelDestroy 车轮损坏 车轮破坏
+
+
+Objects
+蓝色区域自定义选项
+字符
+常见的
+比赛结果
+游戏结束
+游戏状态
+项
+项目计划
+位置
+统计数据
+车辆
+blue Zone Custom Options
+character
+common
+game result
+game result on finished
+game state
+item
+item package
+location
+stats
+vehicle
