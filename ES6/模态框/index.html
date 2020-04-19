@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>模态框</title>
+  <link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+<body>
+  <div class="header">
+    <button class="but">删除</button>
+  </div>
+  <!-- <div class="modal">
+    <div class="modal-tit">
+      <span class="title-on">确认删除</span>
+      <span>X</span>
+    </div>
+    <div class="focus">
+      <span class="wu">误</span>
+      <span>真的要删除吗</span>
+    </div>
+    <div class="button">
+      <button class="success">好的</button>
+      <button class="off">算了吧</button>
+    </div>
+  </div> -->
+  <!-- <div class="shade">
+    
+  </div> -->
+  <script src="./index.js"></script>
+  <script>
+    document.querySelector('.but').addEventListener('click', function() {
+      new $Msg({
+        content: '确认要删除吗？<span>123</span>',
+        success: function(e) {
+        },
+        off: function(e) {
+        },
+        // conHtml: true 默认false。控制content插入的是纯文本还是html标签
+      })
+    })
+    
+  </script>
+</body>
+</html>

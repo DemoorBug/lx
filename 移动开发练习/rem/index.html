@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试一下为什么要动态修改html的font-size值</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1">
+  <!-- <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"> -->
+  <style type="text/css" media="screen">
+    html {
+      font-size: 20px;
+    }
+    .box {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: #222;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <script type="text/javascript">
+    window.onresize = function() {
+      document.documentElement.style.fontSize = (document.documentElement.clientWidth / 375)* 20 +'px';
+    }
+    
+  </script>
+</body>
+</html>

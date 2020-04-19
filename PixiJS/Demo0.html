@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>容器与精灵</title>
+    <style type="text/css" media="screen">
+      *{
+        padding: 0;
+        margin: 0;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <button type="button" name="button">name</button>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./TweenMax.min.js"></script>
+    <script type="text/javascript" src="./pixi.js"></script>
+    <script>
+      var app = new PIXI.Application({
+        width: 1000,
+        height: 1000,
+        transparent: true
+      });
+      document.body.appendChild(app.view)
+
+      var container = new PIXI.Container();
+      app.stage.addChild(container);
+
+      var texture = PIXI.Texture.from('./指向器3.png');
+
+
+      $.ajax({
+        url: './newDate.json',
+        type: 'get',
+        dataType: 'json',
+        success: function (datas) {
+          let tweens = []
+          let id = []
+          let names = []
+          let bj = false
+          datas.some(data => {
+            console.log(data);
+            if (data.character && data.character.name === 'DemoOrBug') {
+              if (data._T == 'LogObjectInteraction') {
+                console.log(data);
+                // bj = true
+              }
+            }
+            if (bj) {
+              return true;
+            }
+
+            if (data.character) {
+              if (!names.includes(data.character.name)) {
+                names.push(data.character.name)
+              }
+              names.forEach((name, i) => {
+                const x = (data.character.location.x / 1000).toFixed(3)
+                const y = (data.character.location.y / 1000).toFixed(3)
+                if (name === data.character.name) {
+                  if (!id[i]) {
+                    id.push({
+                      name: data.character.name,
+                      location: [],
+                      date: [],
+
+                    })
+                  }
+                  id[i].location.push({
+                    left: x,
+                    top: y,
+                    ease: Power0.easeNone
+                  })
+                  id[i].date.push(data._D)
+
+                }
+              });
+            }
+          })
+          let plays = []
+          id.forEach((item, i) => {
+            if (item.name === 'DemoOrBug') {
+            var bunny = new PIXI.Sprite(texture);
+            // console.log(item.location[0].left);
+            bunny.x = item.location[0].left;
+            bunny.y = item.location[0].top;
+            container.addChild(bunny);
+
+            let am = []
+            // console.log(item);
+            // console.log(item);
+            item.location.forEach((num, i) => {
+              let time = 1;
+              am.push(TweenLite.to(bunny, time, {x: num.left, y: num.top, ease: Power0.easeNone}))
+              // console.log(item.name, time, num, item.date[i], item.date[i + 1]);
+              if (item.date[i + 1]) {
+                time = (new Date(item.date[i + 1]) - new Date(item.date[i])) / 10000
+              }
+            });
+
+
+            const tl = new TimelineMax({paused: true})
+            plays.push(tl)
+            tl.add(am, 1, "sequence")
+            console.log('初始化');
+            }
+          });
+
+          $('button').on('click', () => {
+
+            plays.forEach((item, i) => {
+              console.log('播放');
+              item.play()
+            });
+          })
+
+        }
+      })
+    </script>
+  </body>
+
+</html>

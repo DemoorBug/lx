@@ -1,0 +1,565 @@
+/* nav-site */
+.nav-site {
+  width: 100%;
+  background-color: #f3f5f7;
+}
+
+.nav-site .container {
+  height: 44px;
+  line-height: 44px;
+  border-bottom: 1px solid #cdd0d4;
+}
+
+.nav-site-login {
+  margin-left: 15px;
+  color: #f01414;
+}
+
+.nav-site-signup,
+.nav-site-mobile {
+  margin-left: 10px;
+}
+
+.nav-site-mobile {}
+
+.nav-item-category {
+  padding: 0 10px;
+}
+
+.nav-site-service {
+  margin-right: 15px;
+}
+
+/* menu */
+.menu .dropdown-toggle {
+  display: block;
+  height: 100%;
+  line-height: 44px;
+  padding: 0 13px 0 12px;
+  border-left: 1px solid #f3f5f7;
+  border-right: 1px solid #f3f5f7;
+}
+
+.menu .dropdown-arrow {
+  /* background: url(../img/dropdown-arrow.png) no-repeat; */
+  margin-left: 5px;
+  /* width: 8px; */
+  /* height: 6px; */
+  /* margin-top: -2px; */
+  line-height: 1;
+  margin-top: -1px;
+}
+
+.menu .dropdown-layer {
+  top: 43px;
+  border: 1px solid #cdd0d4;
+}
+
+.menu .dropdown-left {
+  left: 0;
+  right: auto;
+}
+
+.menu .dropdown-right {
+  right: 0;
+  left: auto;
+}
+
+.menu .menu-item {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  background: #fff;
+  padding: 0 12px;
+  white-space: nowrap;
+  color: #4d555d;
+}
+
+.menu .menu-item:hover {
+  background: #f3f5f7;
+}
+
+.menu-active .dropdown-toggle {
+  background: #fff;
+  border-color: #cdd0d4;
+}
+
+.menu-active .dropdown-layer {
+  display: block;
+}
+
+.transition {
+  transition: all .3s;
+}
+
+.fadeOut {
+  opacity: 0;
+  visibility: visible;
+}
+/* header  */
+.header {
+  /* padding: 36px 0 34px 0; */
+  height: 118px;
+  width: 100%;
+  background: #f3f5f7;
+}
+.header-logo {
+  display: block;
+  height: 48px;
+  width: 136px;
+  background: url('../img/logo.png') no-repeat;
+  margin-left: 15px;
+}
+
+.header .search {
+  margin-left: 145px;
+}
+
+.header-logo,
+.header .search,
+.header .cart {
+  margin-top: 36px;
+}
+
+.background-glint {
+  animation: bg .7s;
+}
+
+@keyframes bg {
+  0% {
+    background: #fff;
+  }
+  25% {
+    background: rgb(255, 0, 0, .3);
+  }
+  50% {
+    background: #fff;
+  }
+  75% {
+    background: rgb(255, 0, 0, .3);
+  }
+  100% {
+    background: #fff;
+  }
+}
+
+/* 购物车 */
+.cart {
+  margin-right: 15px;
+  background-color: #f01414;
+  padding: 14px 0 13px 0;
+  height: 16px;
+  position: relative;
+  line-height: 16px;
+}
+.cart-active {
+  box-shadow: -3px 9px 8px #f5f3f3;
+  background-color: #fff;
+}
+
+.cart-active .care-shop {
+  border-right-color: #f01414;
+  color: #f01414;
+}
+.cart-active .cart-fr,
+.cart-active .cart-fr {
+  color: #f01414
+}
+[class*='-active'] .cart-arrow {
+    transform: rotate(180deg);
+}
+.care-shop {
+  margin-left: 13px;
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  font-family: '微软雅黑';
+  padding-right: 15px;
+  border-right: 1px solid #fff;
+}
+.care-shop i {
+  line-height: 1;
+  margin-right: 14px;
+}
+.cart-fr {
+  width: 61px;
+  color: #fff;
+}
+.cart-num {
+
+}
+.cart-arrow {
+  margin: 0 18px 0 8px;
+  position: relative;
+  /* margin-top: 1px; */
+}
+.cart-layer {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  color: #07111b;
+  width: 320px;
+  padding: 0 8px 16px 13px;
+  background: #fff;
+  box-shadow: -5px 5px 4px #54494921;
+  z-index: 999
+}
+.cart-layer-title {
+  height: 52px;
+  line-height: 52px;
+  font-size: 14px;
+}
+.cart-layer-list {
+  /* height: 330px; */
+  max-height: 330px;
+  overflow-x: hidden;
+}
+.cart-img {
+  width: 49px;
+  height: 48px;
+  overflow: hidden;
+}
+.cart-img img {
+  width: 49px;
+}
+.cart-time-ls {
+  margin-left: 12px;
+  width: 210px;
+}
+.cart-tit {
+  display: block;
+  height: 29px;
+  line-height: 29px;
+}
+.cart-m {
+  font-weight: bold;
+}
+
+.cart-layer-item {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  background: #fff;
+  padding: 8px 12px;
+}
+.cart-layer-item:hover {
+  background: #f3f5f7;
+  border-color: #d9dde1;
+}
+
+
+.cart-layer-bottom {
+  height: 37px;
+  line-height: 37px;
+  margin-top: 16px;
+}
+
+.cart-layer-o {
+  margin-left: 12px;
+}
+.cart-layer-j {
+  margin-left: 11px;
+}
+.cart-layer-m a {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin-right: 20px;
+  height: 100%;
+  width: 80px;
+  background-color: #f01414;
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* shop请求动画 */
+.loade {
+  margin-top: 30px;
+}
+.loade div{
+  height: 15px;
+  background: #f3f5f7;
+  margin: 10px 0;
+}
+.loader-1 {
+  width: 10%;
+  animation: loader1 .5s infinite
+}
+.loader-2 {
+  width: 30%;
+  animation: loader2 .5s infinite
+
+}
+.loader-3 {
+  width: 40%;
+  animation: loader3 .5s infinite
+
+}
+.loader-4 {
+  width: 20%;
+  animation: loader4 .5s infinite
+
+}
+.loader-5 {
+  width: 60%;
+  animation: loader5 .5s infinite
+
+}
+@keyframes loader1 {
+  0% {
+    width: 30%;
+  }
+  25% {
+    width: 40%;
+  }
+  50% {
+    width: 50%;
+  }
+  75% {
+    width: 70%;
+  }
+  100% {
+    width: 30%;
+  }
+}
+@keyframes loader2 {
+  0% {
+    width: 20%;
+  }
+  25% {
+    width: 40%;
+  }
+  50% {
+    width: 50%;
+  }
+  75% {
+    width: 70%;
+  }
+  100% {
+    width: 20%;
+  }
+}
+@keyframes loader3 {
+  0% {
+    width: 50%;
+  }
+  25% {
+    width: 60%;
+  }
+  50% {
+    width: 70%;
+  }
+  75% {
+    width: 80%;
+  }
+  100% {
+    width: 50%;
+  }
+}
+@keyframes loader4 {
+  0% {
+    width: 30%;
+  }
+  25% {
+    width: 40%;
+  }
+  50% {
+    width: 100%;
+  }
+  75% {
+    width: 70%;
+  }
+  100% {
+    width: 30%;
+  }
+}
+@keyframes loader5 {
+  0% {
+    width: 70%;
+  }
+  25% {
+    width: 100%;
+  }
+  50% {
+    width: 60%;
+  }
+  75% {
+    width: 40%;
+  }
+  100% {
+    width: 70%;
+  }
+}
+
+/* 导航 */
+.nav-section{
+  background: #07111b;
+  width: 100%;
+  text-indent: 182px;
+  margin-bottom: 8px;
+}
+.nav-section .link {
+  margin-left: 50px;
+  height: 48px;
+  line-height: 48px;
+  color: #fff;
+  font-size: 14px;
+}
+/* focue左侧 */
+.focus {
+  height: 504px;
+}
+/* 慕快报 */
+.focus-sidebar {
+  width: 249px;
+}
+.focus-news {
+  border: 1px solid #d9dde1;
+  border-bottom: none;
+  padding: 5px 20px 13px 20px;
+  background: #fff
+}
+.focus-news-head {
+  height: 39px;
+  line-height: 39px;
+}
+.focus-news-title {
+  font-size: 16px;
+  color: #f01414;
+}
+.focus-news-body{
+  line-height: 28px;
+}
+
+
+.focus-service {
+  border-left: 1px solid #d9dde1;
+}
+.focus-service-item {
+  height: 71px;
+  width: 61px;
+  border-right: 1px solid #d9dde1;
+  border-top: 1px solid #d9dde1;
+  display: block;
+  text-align: center;
+}
+.focus-service-item:hover {
+  color: red;
+}
+.focus-service-item:hover .focus-service-icon {
+  animation: focusIcon .6s;
+}
+
+@keyframes focusIcon {
+  0% {
+    transform: translateY(10%)
+  }
+  25% {
+    transform: translateY(-20%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+  75% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+.focus-service-icon {
+  color: #f67272;
+  margin: 11px auto 6px;
+  display: block;
+  font-size: 30px;
+}
+.focus-service-text {
+
+}
+
+#focus-slider.slider {
+  width: 728px;
+  height: 504px;
+  position: relative;
+  margin-left: 8px;
+}
+
+.slider-item {
+
+}
+.slider-indicator-wrap {
+  position: absolute;
+  bottom: 10px;
+  left: 50%
+}
+.slider-indicator-wrap .slider-indicator {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #222;
+  border: 1px solid #fff;
+  float: left;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.slider-control {
+  position: absolute;
+  top: 50%;
+  height: 62px;
+  width: 20px;
+  color: #fff;
+  line-height: 62px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  font-family: "宋体"
+}
+.slider-control-left {
+  left: 0;
+}
+.slider-control-right {
+  right: 0;
+}
+.slider-indicator-wrap .slider-indicator-active {
+  border: 1px solid #222;
+  background: #fff
+}
+.fadeOut {
+  opacity: 0;
+}
+.slider-fade .slider-item {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slider-slide {
+  overflow: hidden;
+}
+.slider-slide .slider-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1000%;
+    height: 100%;
+    background-color: red;
+
+}
+#focus-slider.slider-slide .slider-item {
+  float: left;
+  width: 728px;
+  height: 100%;
+  background: url(../img/TB1FEsePXXXXXcqXXXXXXXXXXXX-80-80.gif) 50% 50% no-repeat #f5f5f5!important;
+}
+
+#jinri-slider.slider .slider-item {
+  float: left;
+  width: 240px;
+  height: 158px;
+  background: url(../img/TB1FEsePXXXXXcqXXXXXXXXXXXX-80-80.gif) 50% 50% no-repeat #f5f5f5!important;
+}
+#jinri-slider.slider {
+  width: 100%;
+  height: 158px;
+  position: relative;
+}

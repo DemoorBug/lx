@@ -1,0 +1,19 @@
+.g-tabbar {
+  height: @tabbar-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  &-item {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .iconfont {
+      margin-bottom: 4px;
+      font-size: @icon-font-size;
+    }
+  }
+}

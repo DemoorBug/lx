@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'SnellRoundhand-BlackScript';
+  src: url('SnellRoundhand-BlackScript.eot');
+  src: url('SnellRoundhand-BlackScript.eot?#iefix') format('embedded-opentype'),
+       url('SnellRoundhand-BlackScript.svg#SnellRoundhand-BlackScript') format('svg'),
+       url('SnellRoundhand-BlackScript.ttf') format('truetype'),
+       url('SnellRoundhand-BlackScript.woff') format('woff'),
+       url('SnellRoundhand-BlackScript.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

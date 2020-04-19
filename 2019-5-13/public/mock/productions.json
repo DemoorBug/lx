@@ -1,0 +1,37 @@
+[{
+  "imgSrc": "/img/o.jpg",
+  "title": "The Double",
+  "date": "(2019)",
+  "center": "Theatre of Imagination (toi) is an experimental theatre project that publishes film poem zine as re-materualised cinema.",
+  "children": {
+    "videoSrc": "/video/video.mp4",
+    "title": "1Theatre of Imagination (toi) is an experimental theatre project that publishes film poem zine as re-materualised cinema.a"
+  }
+}, {
+  "imgSrc": "/img/o.jpg",
+  "title": "The Double2",
+  "date": "(2019)",
+  "center": "Theatre of Imagination (toi) is an experimental theatre project that publishes film poem zine as re-materualised cinema.",
+  "children": {
+    "videoSrc": "/video/video.mp4",
+    "title": "2Theatre of Imagination (toi) is an experimental theatre project that publishes film poem zine as re-materualised cinema.a"
+  }
+}, {
+  "imgSrc": "/img/o.jpg",
+  "title": "The Double3",
+  "date": "(2019)",
+  "center": "Theatre of Imagination (toi) is an experimental theatre project that publishes film poem zine as re-materualised cinema.",
+  "children": {
+    "videoSrc": "/video/video.mp4",
+    "title": "3Theatre of Imagination (toi) is an experimental theatre project that publishes film poem zine as re-materualised cinema.a"
+  }
+}, {
+  "imgSrc": "/img/o.jpg",
+  "title": "The Double4",
+  "date": "(2019)",
+  "center": "Theatre of Imagination (toi) is an experimental theatre project that publishes film poem zine as re-materualised cinema.",
+  "children": {
+    "videoSrc": "/video/video.mp4",
+    "title": "4Theatre of Imagination (toi) is an experimental theatre project that publishes film poem zine as re-materualised cinema.a"
+  }
+}]

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PixiJs</title>
+  <style type="text/css" media="screen">
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    
+  </style>
+</head>
+<body>
+  <script src="./pixi.js"></script>
+  <!-- <script src="./resource-loader.js"></script> -->
+  <script type="text/javascript">
+
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+    //Aliases
+let Application = PIXI.Application,
+    loader = new PIXI.Loader(),
+    Sprite = PIXI.Sprite;
+
+//Create a Pixi Application
+let app = new Application({
+    width: 512,
+    height: 512,                       
+    antialias: true,
+    transparent: false,
+    resolution: 1
+  }
+);
+
+let TextureCache = PIXI.utils.TextureCache
+
+//Add the canvas that Pixi automatically created for you to the HTML document
+document.body.appendChild(app.view);
+
+//load an image and run the `setup` function when it's done
+loader
+  .add("treasureHunter","./LearningPixi-master/examples/images/treasureHunter.json")
+  .load(setup);
+
+//This `setup` function will run when the image has loaded
+function setup(loadera, resources) {
+
+
+  // 1
+  let id = resources.treasureHunter.textures
+  let rocket = new Sprite(id["dungeon.png"]);
+
+  // let keyObject = keyboard();
+   let left = keyboard(37),
+      up = keyboard(38),
+      right = keyboard(39),
+      down = keyboard(40);
+
+  app.stage.addChild(rocket);
+  // 2
+  let explorer = new Sprite(id["explorer.png"])
+  explorer.x = 68;
+  explorer.y = app.stage.height / 2 - explorer.height / 2;
+
+  app.stage.addChild(explorer)
+
+  // 3
+  let treasure = new Sprite(id["treasure.png"])
+
+  treasure.position.set(app.stage.width - treasure.width - 48, app.stage.height / 2 - treasure.height / 2)
+  app.stage.addChild(treasure)
+  // 4
+  let numberOfBlobs = 6,
+      spacing = 48,
+      xOffset = 150;
+  for (let i = 0; i < numberOfBlobs; i++) {
+
+    let blob = new Sprite(id["blob.png"])
+
+    let x = spacing * i + xOffset;
+
+    let y = randomInt(0, app.stage.height - blob.height)
+
+    blob.position.set(x, y)
+
+    app.stage.addChild(blob)
+
+  }
+    treasure.vx = 0;
+    treasure.vy = 0;
+
+    left.press = () => {
+    //Change the cat's velocity when the key is pressed
+      rocket.vx = -5;
+      rocket.vy = 0;
+    };
+    app.ticker.add(delta => gameLoop(delta))
+
+    function gameLoop(delta){
+      //Move the cat 1 pixel
+    treasure.vx = 1;
+
+    treasure.vy = 1;
+      
+    treasure.x += treasure.vx;
+    treasure.y += treasure.vy;
+    }
+}
+
+  loader.onProgress.add(loadProgressHandler)
+
+  function loadProgressHandler (loader, resource) {
+    console.log(resource.url,loader.progress)
+  }
+
+  function keyboard(keyCode) {
+  let key = {};
+  key.code = keyCode;
+  key.isDown = false;
+  key.isUp = true;
+  key.press = undefined;
+  key.release = undefined;
+  //The `downHandler`
+  key.downHandler = event => {
+    if (event.keyCode === key.code) {
+      if (key.isUp && key.press) key.press();
+      key.isDown = true;
+      key.isUp = false;
+    }
+    event.preventDefault();
+  };
+
+  //The `upHandler`
+  key.upHandler = event => {
+    if (event.keyCode === key.code) {
+      if (key.isDown && key.release) key.release();
+      key.isDown = false;
+      key.isUp = true;
+    }
+    event.preventDefault();
+  };
+
+  //Attach event listeners
+  window.addEventListener(
+    "keydown", key.downHandler.bind(key), false
+  );
+  window.addEventListener(
+    "keyup", key.upHandler.bind(key), false
+  );
+  return key;
+}
+  </script>
+</body>
+</html>

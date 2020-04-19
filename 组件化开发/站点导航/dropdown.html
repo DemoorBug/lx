@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <style>
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-toggle {
+      position: relative;
+      z-index: 2;
+    }
+
+    .dropdown-arrow {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .dropdown-layer {
+      display: none;
+      z-index: 1;
+      position: absolute;
+    }
+
+    .dropdown-left {
+      left: 0;
+      right: auto;
+    }
+
+    .dropdown-right {
+      right: 0;
+      left: auto;
+    }
+    /*menu*/
+    .menu .dropdown-toggle {
+      display: block;
+      height: 44px;
+      line-height: 44px;
+      padding: 0 16px 0 12px;
+      border-left: 1px solid #f3f5f7;
+      border-right: 1px solid #f3f5f7;
+    }
+
+    .menu .dropdown-arrow {
+      background: url(../img/dropdown-arrow.png) no-repeat;
+      margin-left: 8px;
+      width: 8px;
+      height: 6px;
+      margin-top: -2px;
+    }
+
+    .menu .dropdown-layer {
+      top: 43px;
+      border: 1px solid #cdd0d4;
+      overflow: hidden;
+    }
+
+    .menu .dropdown-left {
+      left: 0;
+      right: auto;
+    }
+
+    .menu .dropdown-right {
+      right: 0;
+      left: auto;
+    }
+
+    .menu .menu-item {
+      display: block;
+      height: 30px;
+      line-height: 30px;
+      background: #fff;
+      padding: 0 12px;
+      white-space: nowrap;
+      color: #4d555d;
+    }
+
+    .menu .menu-item:hover {
+      background: #f3f5f7;
+    }
+
+    .menu-active .dropdown-toggle {
+      background: red;
+      border-color: #cdd0d4;
+    }
+    /*
+    .menu-active .dropdown-arrow {
+      background: url(../img/dropdown-arrow-red.png) no-repeat;
+    }
+
+    .menu-active .dropdown-layer {
+      display: block;
+    } */
+
+    .transition {
+      transition: all .3s;
+    }
+
+    .slideUpDown {
+      height: 0 !important;
+      padding-top: 0;
+      padding-bottom: 0;
+
+    }
+    .fadeOut {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu dropdown fl" data-loda='dropdown.json'>
+    <a href="javascript:;" class="dropdown-toggle link">我的慕陶<i class="dropdown-arrow"></i></a>
+    <ul class="dropdown-layer dropdown-left">
+      <li><a href="###" target="_blank" class="menu-item">已经买到的宝贝</a></li>
+      <li><a href="###" target="_blank" class="menu-item">我的足迹</a></li>
+    </ul>
+  </div>
+
+  <div class="menu dropdown fl">
+    <a  href="javascript:;" class="dropdown-toggle link">我的慕陶<i class="dropdown-arrow"></i></a>
+    <ul class="dropdown-layer dropdown-left">
+      <li><a href="###" target="_blank" class="menu-item">已经买到的宝贝</a></li>
+      <li><a href="###" target="_blank" class="menu-item">我的足迹</a></li>
+    </ul>
+  </div>
+
+  <div class="menu dropdown fl">
+    <a  href="javascript:;" class="dropdown-toggle link">我的慕陶<i class="dropdown-arrow"></i></a>
+    <ul class="dropdown-layer dropdown-left" data-load="dropdown.json">
+      <!-- <li><a href="###" target="_blank" class="menu-item">已经买到的宝贝</a></li> -->
+      <!-- <li><a href="###" target="_blank" class="menu-item">我的足迹</a></li> -->
+    </ul>
+  </div>
+  <!-- 公共部分 -->
+  <!-- <div class="dropdown menu" data-dropdown="menu">
+    <div href="###" target="_blank" class="dropdown-toggle link">
+      我的慕陶<i class="dropdown-arrow"></i>
+    </div>
+    <ul class="dropdown-layer dropdown-left">
+      <li>s</li>
+    </ul>
+  </div> -->
+  <button id="btn-show">显示</button>
+  <button id="btn-hide">隐藏</button>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+  <script src="./case\显示和隐藏\js\transition.js"></script>
+  <script src="./case\显示和隐藏\js\index.js"></script>
+  <script src="./js/anim.js"></script>
+  <script type="text/javascript">
+    // var dropdown = new mt.Dropdown($('.dropdown'), {
+      //   css3: true,
+      //   animate: 'fade'
+      // })
+      $('.dropdown').dropdown({
+        animate: 'fade',
+        active: 'menu',
+        delay: 0
+      })
+      $('#btn-show').on('click', function() {
+        $('.dropdown').dropdown('show')
+      })
+      $('#btn-hide').on('click', function() {
+        $('.dropdown').dropdown('hide')
+      })
+      $('.dropdown-layer').on('hide hidden', function(e) {
+        // console.log(e.type);
+      })
+      $('.dropdown-layer').on('show', function(e) {
+        var html ='',
+            _this = this,
+            load = $(this).data('load')
+        if (!load) return
+        if (!$(this).data('loader')) {
+          console.log(html);
+          $.getJSON('test/'+load, function(json, textStatus) {
+            $.each(json, function (index) {
+              console.log('s');
+              html += `<li><a href="###" target="_blank" class="menu-item">${json[index].title}</a></li>`
+            })
+            // console.log(this);
+            $(_this).html(html)
+            $(_this).data('loader', true)
+          });
+        }
+        // console.log(e.type);
+      })
+      // $('.dropdown').dropdown({
+        //   // css3: true,
+        //   // js: true,
+        //   // animate: 'fade'
+        // })
+      </script>
+
+</body>
+</html>
