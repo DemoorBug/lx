@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>shop</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/iconfont.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/main.css">
+  </head>
+  <body>
+    <div class="nav-site">
+      <div class="container">
+        <ul class="fl">
+          <li class="fl"><a href="javascript:;" class="nav-site-login">亲，请登录</a></li>
+          <li class="fl"><a href="javascript:;" class="nav-site-signup link">免费注册</a></li>
+          <li class="fl"><a href="###" target="_blank" class="nav-site-mobile link">手机逛慕陶</a></li>
+        </ul>
+        <ul class="fr">
+          <li class="menu dropdown fl">
+            <a href="###" target="_blank" class="dropdown-toggle link transition">我的慕陶<i class="dropdown-arrow iconfont transition">&#xe798;</i></a>
+            <ul class="dropdown-layer dropdown-left">
+              <li><a href="###" target="_blank" class="menu-item">已经买到的宝贝</a></li>
+              <li><a href="###" target="_blank" class="menu-item">我的足迹</a></li>
+            </ul>
+          </li>
+          <li class="menu dropdown fl">
+            <a href="###" target="_blank" class="dropdown-toggle link transition">收藏夹<i class="dropdown-arrow iconfont transition">&#xe798;</i></a>
+            <ul class="dropdown-layer dropdown-left">
+              <li><a href="###" target="_blank" class="menu-item">收藏的宝贝</a></li>
+              <li><a href="###" target="_blank" class="menu-item">收藏夹</a></li>
+            </ul>
+          </li>
+          <li class="fl">
+            <a href="###" target="_blank" class="link nav-item-category">商品分类</a>
+          </li>
+          <li class="menu dropdown fl">
+            <a href="###" target="_blank" class="dropdown-toggle link transition">卖家中心<i class="dropdown-arrow iconfont transition">&#xe798;</i></a>
+            <ul class="dropdown-layer dropdown-left">
+              <li><a href="###" target="_blank" class="menu-item">收藏的宝贝</a></li>
+              <li><a href="###" target="_blank" class="menu-item">收藏夹</a></li>
+            </ul>
+          </li>
+          <li class="menu nav-site-service dropdown fl">
+            <a href="###" target="_blank" class="dropdown-toggle link transition">联系客服<i class="dropdown-arrow iconfont transition">&#xe798;</i></a>
+            <ul class="dropdown-layer dropdown-right" data-load="dropdown.json">
+              <!-- <li><a href="###" target="_blank" class="menu-item">买家客服</a></li> -->
+              <!-- <li><a href="###" target="_blank" class="menu-item">卖家客服</a></li> -->
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="header">
+      <div class="container">
+        <!-- 用h1是搜索引擎优化 -->
+        <h1 class="fl">
+          <a href="#" class="header-logo text-hidden">慕陶网</a>
+        </h1>
+        <div class="search fl">
+          <form class="search-form" action="https://s.taobao.com/search">
+            <input type="text" name="q" class="search-inputbox fl" autocomplete="off" placeholder="灵魂美食一元抢">
+            <input type="submit" value="搜索" class="search-btn fl">
+          </form>
+          <ul class="search-layer">
+            <li class="search-layer-item text-ellipsis" title="">热门搜索</li>
+            <li class="search-layer-item text-ellipsis">nice吗</li>
+          </ul>
+        </div>
+        <div class="cart fr transition">
+          <div class="fl">
+            <a href="#" class="care-shop transition"><i class="iconfont">&#xe61b;</i>购物车</a>
+          </div>
+          <div class="fr cart-fr">
+            <i class="fr iconfont cart-arrow transition">&#xe798;</i>
+            <div class="cart-num fr transition">
+              0
+            </div>
+          </div>
+          <div class="cart-layer transition fadeOut" data-load="cart.json">
+            <div class="loade">
+              <div class="loader-1"></div>
+              <div class="loader-2"></div>
+              <div class="loader-3"></div>
+              <div class="loader-4"></div>
+              <div class="loader-5"></div>
+            </div>
+            <!-- <div class="cart-layer-title">
+              最新加入的商品
+            </div>
+            <ul class="cart-layer-list">
+              <li class="cart-layer-item clearfix">
+                <a href="#" class="fl cart-img"><img src="./img/layer.png" alt=""></a>
+                <div class="fl cart-time-ls">
+                  <a href="#" class="link cart-tit text-ellipsis">adidas 阿迪达斯 训练 男子</a>
+                  <div class="cart-m">
+                    ￥335×1
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="cart-layer-bottom">
+              <div class="fl cart-layer-o">
+                共27商品
+              </div>
+              <div class="fl cart-layer-j">
+                ￥0.00
+              </div>
+              <div class="fr cart-layer-m">
+                <a href="#">去购物车</a>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="container">
+        <a href="#" class="link">数码城</a
+        ><a href="#" class="link">天黑黑</a
+        ><a href="#" class="link">天黑黑团购</a
+        ><a href="#" class="link">发现</a
+        ><a href="#" class="link">二手特价</a
+        ><a href="#" class="link">名品汇</a>
+      </div>
+    </div>
+    <div class="focus">
+      <div class="container">
+        <div class="category fl">
+          <a href="#" class="category-title">
+            <i class="iconfont"></i>商品分类
+          </a>
+          <ul class="category-list">
+            <li class="dropdown category-json">
+              <div class="dropdown-toggles">
+                <a href="#" class="dropdown-link">家用电器</a>
+                <i class="iconfont dropdown-layer-gt">&gt;</i>
+              </div>
+              <div class="dropdown-layer" data-load=category.json>
+                <!-- <dl class="category-details clearfix">
+                  <dt class="category-details-title fl">
+                    <a href="#" class="category-details-title-link">手机通讯</a>
+                  </dt>
+                  <dd class="category-details-item fl">
+                    <a href="#" class="link">手机</a
+                    ><a href="#" class="link">对讲机</a
+                    ><a href="#" class="link">以旧换新</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    >
+                  </dd>
+                </dl> -->
+              </div>
+            </li>
+            <li class="dropdown category-json">
+              <div class="dropdown-toggles">
+                <a href="#" class="dropdown-link">家用电器</a>
+                <i class="iconfont dropdown-layer-gt">&gt;</i>
+              </div>
+              <div class="dropdown-layer" data-load=category1.json>
+                <!-- <dl class="category-details clearfix">
+                  <dt class="category-details-title fl">
+                    <a href="#" class="category-details-title-link">手机通讯</a>
+                  </dt>
+                  <dd class="category-details-item fl">
+                    <a href="#" class="link">手机</a
+                    ><a href="#" class="link">对讲机</a
+                    ><a href="#" class="link">以旧换新</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    ><a href="#" class="link">手机维修</a
+                    >
+                  </dd>
+                </dl> -->
+              </div>
+            </li>
+
+          </ul>
+        </div>
+        <div class="slider fl" id="focus-slider">
+          <div class="slider-container">
+            <div class="slider-item">
+              <a href="#"><img src="" data-src="./img/focus-slider/1.png" class="slider-img" alt=""></a>
+            </div>
+            <div class="slider-item">
+              <a href="#"><img src="" data-src="./img/focus-slider/2.png" class="slider-img" alt=""></a>
+            </div>
+            <div class="slider-item">
+              <a href="#"><img src="" data-src="./img/focus-slider/3.png" class="slider-img" alt=""></a>
+            </div>
+            <div class="slider-item">
+              <a href="#"><img src="" data-src="./img/focus-slider/4.png" class="slider-img" alt=""></a>
+            </div>
+          </div>
+          <ol class="slider-indicator-wrap">
+            <li class="slider-indicator text-hidden slider-indicator-active">1</li>
+            <li class="slider-indicator text-hidden">2</li>
+            <li class="slider-indicator text-hidden">3</li>
+            <li class="slider-indicator text-hidden">4</li>
+          </ol>
+          <a href="javascript:;" class="slider-control-left slider-control">&lt;</a>
+          <a href="javascript:;" class="slider-control-right slider-control">&gt;</a>
+        </div>
+        <div class="focus-sidebar fr">
+          <div class="focus-news">
+            <div class="focus-news-head clearfix">
+              <h2 class="focus-news-title fl">慕快报</h2>
+              <a href="#" class="link fr">更多&gt;</a>
+            </div>
+            <div class="focus-news-body">
+              <p class="text-ellipsis"><a href="#" class="link"><strong>[特惠]</strong>精选图书每满150减50</a></p>
+              <p class="text-ellipsis"><a href="#" class="link"><strong>[特惠]</strong>精选图书每满150减50</a></p>
+              <p class="text-ellipsis"><a href="#" class="link"><strong>[特惠]</strong>精选图书每满150减50</a></p>
+              <p class="text-ellipsis"><a href="#" class="link"><strong>[特惠]</strong>精选图书每满150减50</a></p>
+              <p class="text-ellipsis"><a href="#" class="link"><strong>[特惠]</strong>精选图书每满150减50</a></p>
+            </div>
+          </div>
+          <div class="focus-service clearfix">
+            <a href="#" class="focus-service-item fl">
+              <svg class="icon focus-service-icon" aria-hidden="true">
+                <use xlink:href="#iconshouji"></use>
+              </svg>
+              <span class="focus-service-text">话费</span>
+            </a>
+            <a href="#" class="focus-service-item fl">
+              <svg class="icon focus-service-icon" aria-hidden="true">
+                <use xlink:href="#iconfeiji"></use>
+              </svg>
+              <span class="focus-service-text">机票</span>
+            </a>
+            <a href="#" class="focus-service-item fl">
+              <svg class="icon focus-service-icon" aria-hidden="true">
+                <use xlink:href="#icondianying"></use>
+              </svg>
+              <span class="focus-service-text">电影票</span>
+            </a>
+            <a href="#" class="focus-service-item fl">
+              <svg class="icon focus-service-icon" aria-hidden="true">
+                <use xlink:href="#iconyouxi"></use>
+              </svg>
+              <span class="focus-service-text">游戏</span>
+            </a>
+            <a href="#" class="focus-service-item fl">
+              <svg class="icon focus-service-icon" aria-hidden="true">
+                <use xlink:href="#iconcaipiao"></use>
+              </svg>
+              <span class="focus-service-text">彩票</span>
+            </a>
+            <a href="#" class="focus-service-item fl">
+              <svg class="icon focus-service-icon" aria-hidden="true">
+                <use xlink:href="#iconZ"></use>
+              </svg>
+              <span class="focus-service-text">加油卡</span>
+            </a>
+            <a href="#" class="focus-service-item fl">
+              <svg class="icon focus-service-icon" aria-hidden="true">
+                <use xlink:href="#iconloupan"></use>
+              </svg>
+              <span class="focus-service-text">酒店</span>
+            </a>
+            <a href="#" class="focus-service-item fl">
+              <svg class="icon focus-service-icon" aria-hidden="true">
+                <use xlink:href="#iconhuoche"></use>
+              </svg>
+              <span class="focus-service-text">火车票</span>
+            </a>
+            <a href="#" class="focus-service-item fl">
+              <svg class="icon focus-service-icon" aria-hidden="true">
+                <use xlink:href="#iconConcise"></use>
+              </svg>
+              <span class="focus-service-text">众筹</span>
+            </a>
+            <a href="#" class="focus-service-item fl">
+              <svg class="icon focus-service-icon" aria-hidden="true">
+                <use xlink:href="#iconlicai"></use>
+              </svg>
+              <span class="focus-service-text">理财</span>
+            </a>
+            <a href="#" class="focus-service-item fl">
+              <svg class="icon focus-service-icon" aria-hidden="true">
+                <use xlink:href="#iconshinshoplipinqia"></use>
+              </svg>
+              <span class="focus-service-text">礼品卡</span>
+            </a>
+            <a href="#" class="focus-service-item fl">
+              <svg class="icon focus-service-icon" aria-hidden="true">
+                <use xlink:href="#iconbaitiaoshanfu"></use>
+              </svg>
+              <span class="focus-service-text">白条</span>
+            </a>
+          </div>
+          <div>
+            <img src="./img/bg.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tuij">
+      <div class="container">
+        <div class="slider fl" id="jinri-slider">
+          <div class="slider-container clearfix">
+            <div class="slider-item">
+              <a href="#"><img src="" data-src="./img/todays-slider/1.png" class="slider-img" alt=""></a>
+            </div>
+            <div class="slider-item">
+              <a href="#"><img src="" data-src="./img/todays-slider/2.png" class="slider-img" alt=""></a>
+            </div>
+            <div class="slider-item">
+              <a href="#"><img src="" data-src="./img/todays-slider/3.png" class="slider-img" alt=""></a>
+            </div>
+            <div class="slider-item">
+              <a href="#"><img src="" data-src="./img/todays-slider/4.png" class="slider-img" alt=""></a>
+            </div>
+            <div class="slider-item">
+              <a href="#"><img src="" data-src="./img/todays-slider/5.png" class="slider-img" alt=""></a>
+            </div>
+            <div class="slider-item">
+              <a href="#"><img src="" data-src="./img/todays-slider/5.png" class="slider-img" alt=""></a>
+            </div>
+            <div class="slider-item">
+              <a href="#"><img src="" data-src="./img/todays-slider/5.png" class="slider-img" alt=""></a>
+            </div>
+          </div>
+          <a href="javascript:;" class="slider-control-left slider-control">&lt;</a>
+          <a href="javascript:;" class="slider-control-right slider-control">&gt;</a>
+        </div>
+      </div>
+    </div>
+    <!-- <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script> -->
+    <script src="./js/iconfont.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.js"><\/script>')</script>
+    <!-- <script src="./js/index.js" charset="utf-8"></script> -->
+    <script src="./case\显示和隐藏/js/transition.js"></script>
+    <script src="./case\显示和隐藏/js/index.js"></script>
+    <script src="./js/anim.js"></script>
+    <!-- <script src="./js/search.js"></script> -->
+    <script src="./js/move.js"></script>
+    <script src="./js/slider.js"></script>
+    <script src="./js/search-fun.js"></script>
+    <script type="text/javascript">
+    // (function($) {
+    //   'use strict'
+    //   function dropdown(elem) {
+    //     var $elem = $(elem)
+    //     $elem.hover(function() {
+    //       var $this = $(this)
+    //       $this.addClass($this.data('dropdown')+'-active');
+    //     }, function() {
+    //       var $this = $(this)
+    //       $this.removeClass($this.data('dropdown')+'-active');
+    //     })
+    //   }
+    //   $.fn.extend({
+    //     dropdown: function() {
+    //       this.each(function() {
+    //         dropdown(this)
+    //       })
+    //       return this
+    //     }
+    //   })
+    // })(jQuery);
+    // 搜索框
+    var html = '',
+        htmlload = $('.search-layer').html();
+    $('.search').search({
+      autocomplete: true,
+    }).on('successEvent', function (e, data, $layer) {
+      html = createHeaderLyaer(data, $layer)
+      //判断是否输入值为空，空则显示默认下拉框，也就是最近搜索下拉框，可以把这些内容存到cookie，或者塞申里面，就可以得到一个用户搜索过的列表
+
+      // if ($('.search-inputbox').val().trim().length === 0) {
+      //
+      //   return
+      // }
+
+      if (html) {
+        $layer.html(html)
+        $(this).search('showLayer', $layer)
+      } else {
+        $layer.html('')
+        $(this).search('hideLayer', $layer)
+      }
+    }).on('click', 'li', function() {
+      $('.search').search('setInput', $(this).html())
+      // $('.search-form').submit()
+      $('.search').search('submit')
+    }).on('errEvent', function (e, $layer) {
+      $layer.html(htmlload)
+      // $(this).search('hideLayer', $layer)
+    })
+
+
+
+    function createHeaderLyaer(data, $layer) {
+      //成功回调
+      var html = '',
+          dataNum = data.result.length,
+          numMax = 9; //自定义显示条目
+      if (dataNum === 0) { //没有数据就直接退出
+        return ''
+      }
+
+      for (var i = 0; i < dataNum; i++) { //循环遍历数据
+        if (numMax <= i) { //自定义显示条目
+          break
+        }
+        html += '<li class="search-layer-item text-ellipsis">'+data.result[i][0]+'</li>'
+      }
+      return html
+    }
+
+    //购物车
+    $('.cart').dropdown({
+      animate: 'fade',
+      layer: 'cart-layer',
+      active: 'cart'
+    })
+
+    // 下拉
+    $('.menu').dropdown({
+      animate: 'fade'
+    })
+    $('.menu .dropdown-layer').on('show', function(e) {
+      loadOnce($(this), buildMenuItem)
+      // console.log(e.type);
+    })
+
+    $('.category-json').dropdown({
+      animate: 'fade',
+    }).find('.dropdown-layer').on('show', function (e) {
+      loadOnce($(this), buildCategory)
+    })
+    function buildCategory (data, $elem) {
+      var html = '';
+      if (data.length === 0) {
+        return false
+      }
+      // console.log(data.length, data[0].title, data[0].items[0]);
+      for (var i = 0; i < data.length; i++) {
+      html += `<dl class="category-details clearfix">
+        <dt class="category-details-title fl">
+          <a href="#" class="category-details-title-link">${data[i].title}</a>
+        </dt>
+        <dd class="category-details-item fl">`;
+        for (var j = 0; j < data[i].items.length; j++) {
+          html += `<a href="#" class="link">${data[i].items[j]}</a>`;
+        }
+        html += `</dd>
+        </dl>`
+      }
+      $elem.html(html)
+    }
+
+    function loadOnce($elem, success) {
+      var load = $elem.data('load')
+      if (!load) return
+      if (!$elem.data('loader')) {
+        $elem.data('loader', true)
+        $.getJSON('test/'+load).done(function (data) {
+          if (typeof success === 'function') {
+            return success(data, $elem);
+          }
+        }).fail(function () {
+          $elem.data('loader', false)
+        })
+      }
+    }
+
+    function buildMenuItem(data, $elem) {
+      var html = '';
+      if (data.length === 0) {
+        return false
+      }
+      for (var i = 0; i < data.length; i++) {
+        html += `<li><a href="###" target="_blank" class="menu-item">${data[i].title}</a></li>`
+      }
+      $elem.html(html)
+    }
+
+
+    $('.cart-layer').on('show', function (e) {
+      var html ='',
+          $this = $(this),
+          load = $(this).data('load'),
+          num = 0,
+          length = 0;
+      if (!load) return
+      if (!$(this).data('loader')) {
+        html += `<div class="cart-layer-title">
+          最新加入的商品
+        </div>
+        <ul class="cart-layer-list">`;
+        setTimeout(function () {
+          $.getJSON('test/'+load, function(json, textStatus) {
+            $.each(json, function (index) {
+              html += `<li class="cart-layer-item clearfix">
+              <a href="${json[index].url}" class="fl cart-img"><img src="${json[index].img}" alt=""></a>
+              <div class="fl cart-time-ls">
+              <a href="#" class="link cart-tit text-ellipsis">${json[index].title}</a>
+              <div class="cart-m">
+              ${json[index].price}×${json[index].num}
+              </div>
+              </div>
+              </li>`
+              num += json[index].price * json[index].num
+              length++
+            })
+            html += `</ul>
+            <div class="cart-layer-bottom">
+            <div class="fl cart-layer-o">
+            共${length}商品
+            </div>
+            <div class="fl cart-layer-j">
+            ￥${num}
+            </div>
+            <div class="fr cart-layer-m">
+            <a href="#">去购物车</a>
+            </div>`
+            $this.html(html)
+            $this.data('loader', true)
+          });
+        },500)
+      }
+    })
+
+    $(function () {
+      var $focusSlider = $('#focus-slider')
+      $focusSlider.items = {};
+      $focusSlider.loadedItemNum = 0;
+      $focusSlider.totalItemNum = $focusSlider.find('.slider-img').length + 1
+      $focusSlider.loadItem;
+
+      $focusSlider.on('slider-show', loadItem = function (e, index, elem) {
+        if ($focusSlider.items[index] !== 'loaded') {
+          var $img = $(elem).find('.slider-img')
+          loadImg($img.data('src'), function (url) {
+            $img.attr('src', url)
+            $focusSlider.items[index] = 'loaded'
+            $focusSlider.loadedItemNum++
+            if ($focusSlider.loadedItemNum === $focusSlider.totalItemNum) {
+              $('.slider').off('slider-show', $focusSlider.loadItem)
+            }
+          }, function () {
+            console.log('错误操作')
+          })
+        }
+
+      })
+      $focusSlider.slider({
+        animate: 'fade',
+        animation: 'fade'
+      })
+
+      function loadImg(url, imgLoaded, errLoaded) {
+        var image = new Image();
+
+        image.onerror = function () {
+          if (typeof imgLoaded === 'function') {
+            return errLoaded(url)
+          }
+        }
+
+        image.onload = function () {
+          if (typeof imgLoaded === 'function') {
+            return imgLoaded(url)
+          }
+        }
+        setTimeout(function () {
+          // $('slider-img').eq($(this).find('.slider-item').length-1).attr('src', $('slider-img').eq(0).attr('src'))
+          image.src = url;
+          console.log('s');
+          if (!$focusSlider.find('.slider-img').eq(0).attr('src')) {
+            setTimeout(function () {
+              console.log($focusSlider.find('.slider-img').length,$focusSlider.find('.slider-item').length);
+              $focusSlider.find('.slider-img').eq($focusSlider.find('.slider-item').length - 1).attr('src', $focusSlider.find('.slider-img').eq(0).attr('src'))
+            }, 20)
+          }
+        }, 500)
+      }
+
+      var $jinriSlider = $('#jinri-slider')
+      $jinriSlider.items = {};
+      $jinriSlider.loadedItemNum = 0;
+      $jinriSlider.totalItemNum = $jinriSlider.find('.slider-img').length + 1
+      $jinriSlider.loadItem;
+
+      $jinriSlider.on('slider-show', loadItem = function (e, index, elem) {
+        if ($jinriSlider.items[index] !== 'loaded') {
+          var $img = $(elem).find('.slider-img')
+          loadImgs($img.data('src'), function (url) {
+            $img.attr('src', url)
+            $jinriSlider.items[index] = 'loaded'
+            $jinriSlider.loadedItemNum++
+            if ($jinriSlider.loadedItemNum === $jinriSlider.totalItemNum) {
+              $('.slider').off('slider-show', $jinriSlider.loadItem)
+            }
+          }, function () {
+            console.log('错误操作')
+          })
+        }
+
+      })
+      $jinriSlider.slider({
+        animate: 'fade',
+        animation: 'slide'
+      })
+
+      function loadImgs(url, imgLoaded, errLoaded) {
+        var image = new Image();
+
+        image.onerror = function () {
+          if (typeof imgLoaded === 'function') {
+            return errLoaded(url)
+          }
+        }
+
+        image.onload = function () {
+          if (typeof imgLoaded === 'function') {
+            return imgLoaded(url)
+          }
+        }
+        setTimeout(function () {
+          // $('slider-img').eq($(this).find('.slider-item').length-1).attr('src', $('slider-img').eq(0).attr('src'))
+          image.src = url;
+          if (!$jinriSlider.find('.slider-img').eq(0).attr('src')) {
+            setTimeout(function () {
+              $jinriSlider.find('.slider-img').eq($('.slider-item').length - 1).attr('src', $jinriSlider.find('.slider-img').eq(0).attr('src'))
+            }, 20)
+          }
+        }, 500)
+      }
+    })
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo</title>
+  <style type="text/css" media="screen">
+    div.names {
+      width: 800px;
+      height: 800px;
+      border: 1px solid #000;
+      position: relative;
+    }
+    .helo {
+      width: 5px;
+      height: 5px;
+      position: absolute;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="names">
+
+  </div>
+  <button>play</button>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script src="./TweenMax.min.js"></script>
+  <script type="text/javascript">
+
+    $.ajax({
+      url: './newDate.json',
+      type: 'get',
+      dataType: 'json',
+      success: function (datas) {
+        let tweens = []
+        let id = []
+        let names = []
+        datas.forEach(data => {
+          // if (true) {}
+          if (data.character) {
+            if (!names.includes(data.character.name)) {
+              names.push(data.character.name)
+            }
+            names.forEach((name, i) => {
+              const x = (data.character.location.x / 1000).toFixed(3)
+              const y = (data.character.location.y / 1000).toFixed(3)
+              if (name === data.character.name) {
+                if (!id[i]) {
+                  id.push({
+                    name: data.character.name,
+                    location: [],
+                    date: []
+                  })
+                }
+                id[i].location.push({
+                  left: x,
+                  top: y,
+                  ease: Power0.easeNone
+                })
+                id[i].date.push(data._D)
+              }
+            });
+          }
+        })
+        let plays = []
+        id.forEach((item, i) => {
+          // if (item.name === 'kerof') {
+          console.log(item);
+          const $h1 = $(`<div class='helo ${item.name}' style="left: ${item.location[0].left}px; top: ${item.location[0].top}px"></div>`)
+          $(".names").append($h1)
+          let am = []
+          // console.log(item);
+          item.location.forEach((num, i) => {
+            let time = 1;
+            am.push(TweenLite.to(`.${item.name}`, time, num))
+            // console.log(item.name, time, num, item.date[i], item.date[i + 1]);
+            if (item.date[i + 1]) {
+              time = (new Date(item.date[i + 1]) - new Date(item.date[i])) / 10000
+            }
+          });
+
+
+          const tl = new TimelineMax({paused: true})
+          plays.push(tl)
+          tl.add(am, 1, "sequence")
+          console.log('初始化');
+          // }
+        });
+        $('button').on('click', () => {
+
+          plays.forEach((item, i) => {
+            console.log('播放');
+            item.play()
+          });
+        })
+
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>css3实现隐藏显示</title>
+    <link rel="stylesheet" href="../../css/base.css">
+
+    <style>
+      .show,
+      .hide {
+        display: inline-block;
+        width: 30px;
+        line-height: 30px;
+        background: #ccc;
+        padding: 30px;
+        font-size: 14px;
+      }
+      .container {
+        text-align: center;
+        font-size: 0px;
+        width: 1230px;
+        margin: 0 auto;
+      }
+      .box {
+        font-size: 14px;
+        background: red;
+        line-height: 30px;
+        width: 30px;
+        padding: 30px;
+        display: none;
+        overflow: hidden;
+      }
+
+      .transition {
+        transition: all .5s;
+      }
+      .fadeOut {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .slideUpDown {
+        height: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="show">
+        显示
+      </div>
+      <div class="hide">
+        隐藏
+      </div>
+      <div class="box">
+        1
+      </div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+    <script src="./js/transition.js"></script>
+    <script src="./js/index.js"></script>
+    <script type="text/javascript">
+      var $box = $('.box')
+      $box.showHide({
+        animate: 'slideUpDown'
+      })
+      $('.show').on('click', function(e) {
+        // js.slideRight.show($box)
+        $box.showHide('show')
+      })
+      $('.hide').on('click', function() {
+        // js.slideRight.hide($box)
+        $box.showHide('hide')
+      })
+      $($box).on('hide hidden', function(e) {
+        console.log(e.type);
+      })
+      $($box).on('show shown', function(e) {
+        console.log(e.type);
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo</title>
+  <script src="https://cdn.bootcss.com/velocity/2.0.5/velocity.min.js"></script>
+</head>
+<body>
+<div id="root">
+    <input type="range" min="0" max="2000" model="500" v-model="indexnames1">
+    <input type="range" min="0" max="2000" model="500" v-model="indexnames2">
+    <fade :show="showa" :index1="indexnames1" :index2="indexnames2"
+    >
+        <div>hello world
+        </div>
+    </fade>
+    <button @click="handclick">mos</button>
+    <div v-show="false">12312</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 因为 AJAX 库和通用工具的生态已经相当丰富，Vue 核心代码没有重复 -->
+<!-- 提供这些功能以保持精简。这也可以让你自由选择自己更熟悉的工具。 -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.js"></script> -->
+<script>
+Vue.component('fade', {
+    props: ['show','index1','index2'],
+    data () {
+      return {
+        hide: this.show
+      }
+    },
+    template: `
+        <transition @before-enter="handleBeforeEnter" @enter="handleEnter" @leave="hanleave">
+            <slot v-show="hide"></slot>
+        </transition>
+    `,
+    computed: {
+      // shows: function () {
+      //   this.hide = this.show
+      //   console.log('s')
+      //   return this.show
+      // }
+    },
+    mounted () {
+      console.log(this.shows)
+    },
+    watch: {
+      show: function () {
+        this.hide = this.show
+      }
+    },
+    methods: {
+        handleBeforeEnter: function(el) {
+            el.style.opacity = 0;
+        },
+        handleEnter: function(el,done) {
+            var this_ = this
+            Velocity(el, {
+                opacity: 1,
+            },{
+                duration: this_.index1,
+                complete: function() {
+                    done()
+                    this_.hide = !this_.hide
+
+                }
+            })
+        },
+        hanleave: function(el,done) {
+            var this_ = this
+            Velocity(el, {
+                opacity: 0
+            },{
+                duration: this_.index2,
+                complete: function() {
+                    done()
+                    this_.hide = !this_.hide
+                }
+            })
+        }
+
+    }
+})
+var vm = new Vue({
+    el: '#root',
+    data: {
+        showa: false,
+        indexnames1: '1000',
+        indexnames2: '1000'
+    },
+    methods: {
+        handclick: function() {
+            cas: '2'
+            this.showa = !this.showa
+        }
+    }
+    
+})
+</script>
+</body>
+</html>

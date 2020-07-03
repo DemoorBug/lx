@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>网易四字魔咒</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div id="loading" class="col">
+    <div class="loading-main"></div>
+    <div id="percent">
+      0%
+    </div>
+  </div>
+  <script src="./js/AlloyTouch.js" charset="utf-8"></script>
+  
+  <script src="./pixi.js"></script>
+  <script src="./js/scene.js"></script>
+  <script src="./js/sprites.js"></script>
+  <script>
+    // let app = new PIXI.Application({
+    //   width: 1334,
+    //   height: 750
+    // })
+    const w = document.body.clientWidth,
+          h = document.body.clientHeight;
+    const app = new PIXI.Application({
+      width: w,
+      height: h,
+      backgroundColor: 0xd7a664
+    })
+
+    let min = (w<h)?w:h;
+    let scale = min/750;  // 根据设计稿尺寸进行缩放比例调整
+    const loader = new PIXI.Loader()
+
+    loader.add('bg1', './imgs/bg1.png')
+      .add('tv', './imgs/tv.png')
+      .add('curtain','./imgs/curtain.png')
+      .add('tree', './imgs/tree.png')
+      .add('bg2', './imgs/bg2.jpg')
+      .add('mother','./imgs/mother.png')
+      .add('mother_body', './imgs/mother_body.png')
+      .add('mother_left', './imgs/mother_left.png')
+      .add('mother_right', './imgs/mother_right.png')
+      .add('boy', './imgs/boy.png')
+      .add('child','./imgs/child.png')
+      .add('desk','./imgs/desk.png')
+    loader.load()
+
+
+    loader.onProgress.add(function(target, resource){
+      
+      document.getElementById('percent').innerText = parseInt(target.progress) + "%"
+    })
+
+    loader.onComplete.add(function(target, resource){
+    
+      document.getElementById('loading').style.display = 'none';
+      document.body.appendChild(app.view)
+
+      initScenes()
+      initSprites()
+      initAnimation()
+      app.stage.scale.set(scale, scale)
+      if (w<h) {
+        app.stage.rotaion = 1.57;
+        app.stage.pivot.set(0.5)
+        app.stage.x = w
+        initTouch(true, 'y')
+      } else {
+        initTouch(false, 'x')
+      }
+      
+    })
+  </script>
+  <script src="./js/TimelineMax.min.js" charset="utf-8"></script>
+  <script src="./js/TweenMax.min.js" charset="utf-8"></script>
+
+  <script src="./js/animation.js"></script>
+  <script src="./js/index.js" charset="utf-8"></script>
+  
+</body>
+</html>

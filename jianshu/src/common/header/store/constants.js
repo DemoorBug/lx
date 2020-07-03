@@ -1,0 +1,7 @@
+export const FOCUSED = 'header/FOCUSED'
+export const FALSEFOCUSED = 'header/FALSEFOCUSED'
+export const AJAXSERCH = 'header/AJAXSERCH'
+export const CHANGE_LIST = 'header/CHANGE_LIST'
+export const MOUSEENTER = 'header/MOUSEENTER'
+export const MOUSELEAVE = 'header/MOUSELEAVE'
+export const PAGE_CHANGE = 'header/PAGE_CHANGE'

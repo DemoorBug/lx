@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+ 
+  <head>
+    <meta charset="UTF-8">
+    <title>容器与精灵</title>
+    <script type="text/javascript" src="./pixi.js"></script>
+  </head>
+ 
+  <body>
+    <script>
+      var app = new PIXI.Application(800, 600, {
+        backgroundColor: 0x1099bb
+      });
+      document.body.appendChild(app.view);
+ 
+      var container = new PIXI.Container();
+      app.stage.addChild(container);
+ 
+      var texture = PIXI.Texture.fromImage('./LearningPixi-master/examples/images/cat.png');
+      for(var i = 0; i < 25; i++) {
+        var bunny = new PIXI.Sprite(texture);
+        bunny.anchor.set(0.5);
+        bunny.x = (i % 5) * 65;
+        bunny.y = Math.floor(i / 5) * 65;
+        container.addChild(bunny);
+      }
+      console.log(container.pivot)
+      container.x = app.renderer.width / 2;
+      container.y = app.renderer.height / 2;
+      //设置container容器原点
+      container.pivot.x = container.width / 2;
+      container.pivot.y = container.height / 2;
+      container.scale.set(1)
+      app.ticker.add(function(delta) {
+        container.rotation -= 0.01 * delta;
+      });
+    </script>
+  </body>
+ 
+</html>

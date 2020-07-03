@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>拖拽实现</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+  <style type="text/css" media="screen">
+    html {
+      height: 2000px;
+    }
+    .top {
+      height: 20px;
+      width: 20px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      border-radius: 50%;
+      background: rgba(0,0,0,.3);
+      /*transition: all .3s;*/
+    }
+  </style>
+</head>
+<body>
+  <div class="top" id="top">
+  </div>
+    122
+
+  <script>
+    var docEl = document.documentElement;
+    var topN = document.getElementById('top');
+
+    var coordinate = {
+      pageX: 0,
+      pageY: 0
+    }
+    var page = {
+      pageX: 0,
+      pageY: 0
+    }
+    var isTouchMove = false;
+
+    topN.addEventListener('touchstart', function(ev) {
+      var changedTouches = ev.changedTouches[0]
+      coordinate.pageX = changedTouches.pageX;
+      coordinate.pageY = changedTouches.pageY;
+    })
+    topN.addEventListener('touchmove', function(ev) {
+      ev.preventDefault()
+
+      isTouchMove = true;
+
+      var changedTouches = ev.changedTouches[0]
+      var x = changedTouches.pageX - coordinate.pageX + page.pageX;
+      var y = changedTouches.pageY - coordinate.pageY + page.pageY;
+
+      ev.target.style.transform = 'translate3d('+ x +'px,'+ y +'px,0)'
+    })
+    topN.addEventListener('touchend', function(ev) {
+      if (!isTouchMove) {return};
+      console.log('touch')
+      var changedTouches = ev.changedTouches[0]
+      page.pageX += changedTouches.pageX - coordinate.pageX;
+      page.pageY += changedTouches.pageY - coordinate.pageY;
+
+      isTouchMove = false
+    })
+  </script>
+</body>
+</html>

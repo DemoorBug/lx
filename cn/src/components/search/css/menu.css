@@ -1,0 +1,428 @@
+BODY{
+	scrollbar-face-color: #DEE3E7;
+	scrollbar-highlight-color: #D1D7DC;
+	scrollbar-shadow-color: #98AAB1;
+	scrollbar-3dlight-color: #ffffff;
+	scrollbar-arrow-color: #006699;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-darkshadow-color: #EFEFEF;
+	margin-left:0px;
+	margin-top:0px;
+	margin-right:0px;
+	margin-bottom:0px;
+	overflow-x:auto;
+	overflow-y:auto;
+	font-size:12px;
+	font-family:宋体; 
+  background-color: #F5F5F8; 
+ 
+}
+
+/*清除样式*/
+INPUT{
+padding-top:0;
+padding-bottom:0;
+height:18px;
+}
+
+img{
+   border:0px;
+   }
+   
+ /*导航栏*/
+.navigator{
+      height:25px;
+      background-color:#dcdfe5;
+      padding-top:6px;
+      font-size:12px;
+   }
+
+/*单记录表-标题*/	
+.single_table_title
+	{
+	width:100%;
+	height:22;
+	font-size:9pt;
+	border-left:#A6C9F7 1px solid;
+  background-image: url(../images/list_title_bg1.gif);	
+	}
+
+/*单记录表格背景 EEF1F7 COLOR="#DFE8F6"*/
+	.dataTable{	
+	  background-color:#EEF1F7;
+		border-top: #A6C9F7 1px solid;
+	  border-right: #A6C9F7 1px solid;
+	  
+	}
+
+/*单记录表-标题单元格 	 */ 
+.tdprompt	{	
+	text-align: right;
+	font-size:12px;
+  padding-top:3px;
+	padding-right:3px;
+	padding-bottom:2px;
+	height:20px;
+	border-left: #A6C9F7 1px solid;
+	border-bottom: #A6C9F7 1px solid;
+	}
+.tdbutton{
+	text-align: center;
+	font-size:12px;
+  	padding-top:3px;
+	padding-right:3px;
+	padding-bottom:2px;
+	height:20px;
+	border-left: #A6C9F7 1px solid;
+	border-bottom: #A6C9F7 1px solid;
+	}
+	
+/*单记录表-录入单元格*/
+.tdinput{	
+  padding-top:1px;
+  
+  font-size:12px;
+  padding-left:3px;
+  padding-right:3px;
+  border-left: #A6C9F7 1px solid;
+  border-bottom: #A6C9F7 1px solid;
+	background-color:white;  
+}
+
+.tdread	{
+	padding-top:2px;
+    color: #073789;
+    font-size: 12px;	
+    font-family: arial, 宋体;
+  	width:100%; 
+    height:18px;
+    background-color:white;
+    border: #A7A8AF 1px solid;
+	}
+ 
+/*去除多记录表中TD样式的重复定义*/
+table.dataTable td{
+	valign:top;
+
+	
+}
+table.list_table tbody td a{
+	margin-right:10px;
+}
+
+
+
+/*列表表单样式-整个table*/
+.list_table{	
+  BORDER-TOP: #A6C9F7 1px solid;
+  BORDER-RIGHT: #A6C9F7  1px solid;
+	BORDER-LEFT: #A6C9F7  1px solid;
+	BORDER-BOTTOM: #A6C9F7  1px solid;
+	font-size:9pt;
+	background-color:#fff;
+}
+
+/*替代 list_table_thead_td_title*/
+tr.list_table_thead_tr_title {
+	
+        background:#CEF0FC;
+	text-align: center; 
+	height: 18px; 
+	font-size: 9pt; 
+	white-space:nowrap;
+  padding-top:2px;
+}
+/*列表标题列*/
+
+.list_table_thead_td_title{
+	border-left: #fff 1px solid;
+
+}
+ 
+
+tr.list_table_tbody_tr td,
+tr.list_table_tbody_tr_mouseover td,
+tr.list_table_tbody_tr1 td,
+tr.list_table_tbody_tr1_mouseover td{
+	border-left: #97CCFF 0px solid; 
+	font-family: "Times New Roman", "宋体"; 
+	font-size: 12px; 
+	border-right: #97CCFF 1px solid;
+	white-space:nowrap;
+	align:left;
+	text-align:left;
+	height:25px;
+	padding-left:3px;
+	border-top: #97CCFF 1px solid;
+}
+ 
+/*列表内容每一行的样式（灰）#EDECEC*/		
+tr.list_table_tbody_tr1{
+	font-size: 12px;   
+	background-color: #EDECEC; 
+	height:18px;
+}	
+ 
+ 
+/*当鼠标移到列表内容中某一行（白）时的样式	*/	
+tr.list_table_tbody_tr_mouseover
+	{
+	font-family: "宋体","Times New Roman";
+	font-size: 12px;   
+	background-color: #E9F5F9;
+	height:20;
+	}
+
+/*当鼠标移到列表内容中某一行（灰）时的样式 */	
+tr.list_table_tbody_tr1_mouseover
+	{
+	font-family: "Times New Roman", "宋体";
+	font-size: 12px;  
+	background-color: #92E0F9;
+	height:20;
+	} 
+
+
+ 
+/*单记录表-录入单元格-text录入项*/   
+.solidborder	{
+    border: #B5B8C8 1px solid;
+    color: #000000;
+    font-size: 9pt;	
+    font-family: arial, 宋体;
+  	width:100%; 
+    height:18px;
+    padding-top:2px; 
+    background-color:white;
+	}
+	
+/*单记录表-录入单元格-textarea录入项*/	
+.solidtextArea{
+    border-right: #B5B8C8 1px solid;
+    border-top: #B5B8C8 1px solid;
+    font-size: 12px;
+    border-left: #B5B8C8 1px solid;
+    color: #000000;
+    border-bottom: #B5B8C8 1px solid;
+    font-family: arial, 宋体;
+    width:100%;
+    background-color:white;
+    word-break:break-all; /*强制换行*/
+}
+	
+
+.solidselect{
+	font-family: Arial,宋体; 
+	font-size: 10px; 
+     	border: 1px solid;
+	border-left:hidden;
+	border-top:hidden;
+	border-right:hidden;
+	border-bottom:hidden;
+	width:100%;
+	height:18px;
+	background-color:white;
+}
+
+.solidmulselect{
+	font-family: Verdana,Arial,宋体; 
+	font-size: 12px; border: 1px solid;
+        color: #737893;
+	border-left:hidden;
+	border-top:hidden;
+	border-right:hidden;
+	border-bottom:hidden;
+	width:100%;
+}
+
+/*分页栏的配置*/
+
+.list_table_pageSplitInfo{
+   font-size: 12px;
+   border-left: #A6C9F7 1px solid;
+	 border-right: #A6C9F7 1px solid;
+	 border-bottom: #A6C9F7 1px solid;
+   background-image: url(../images/pageInfo.gif); 
+   height:20
+}
+/*分页栏输入框样式*/
+.pageinput{	
+  font-size:12px;
+  padding-left:3px;
+  padding-right:3px;
+  border: #B5B8C8 1px solid;
+	background-color:white;  
+}
+	
+a:link ,.list_table a:link{
+	color: #006a73; font-size: 9pt; text-decoration: none
+}
+a:visited ,.list_table a:visited{
+	color: #006a73; font-size: 9pt; text-decoration: none
+}
+a:active ,.list_table a:active{
+	color: #006a73; font-size: 9pt; text-decoration: none
+}
+a:hover ,.list_table a:hover{
+	color: #00872f; font-size: 9pt; text-decoration: none
+}
+
+a.buttonlink {
+	text-align: center;  
+	background-position: center center; 
+	height: 20px; 
+	width:75px;
+	cursor: hand;
+	word-spacing: 6px; 
+	text-decoration: none; 
+	padding-top: 4px;
+	background-image: url(../images/button.gif); 
+	border:#7b9ebd 1px solid;
+  text-kashida-space:20%; 
+	margin-right:5px;
+}
+a.buttonlink:link {
+	color: #5e78bd; text-decoration: none
+}
+a.buttonlink:visited {
+	color: #5e78bd; text-decoration: none
+}
+a.buttonlink:active {
+	color: #5e78bd; cursor: hand; text-decoration: none
+}
+a.buttonlink:hover {
+	color: #003aa3;
+	text-decoration: none;
+	/*background-image: url(../images/button_d.gif);*/
+}
+
+/*按钮的样式 可变长度*/
+a.buttonlink2 {
+	margin-left:5px;
+	padding:0 15px;
+	text-align: center;  
+	background-position: center center; 
+	height: 20px; 
+	cursor: hand;
+	word-spacing: 6px; 
+	text-decoration: none; 
+	padding-top: 4px;
+	background-image: url(../images/button.gif); 
+	border:#7b9ebd 1px solid;
+  text-kashida-space:20%; 
+}
+a.buttonlink2:link {
+	color: #036776; text-decoration: none
+}
+a.buttonlink2:visited {
+	color: #036776; text-decoration: none
+}
+a.buttonlink2:active {
+	color: #036776; cursor: hand; text-decoration: none
+}
+a.buttonlink2:hover {
+	color: #003aa3;
+	text-decoration: none;
+	/*background-image: url(../images/button_d.gif);*/
+}
+
+/*按钮的样式 可变长度*/
+a.buttonlink3 {
+	margin-left:5px;
+	padding:0 15px;
+	text-align: center;  
+	background-position: center center; 
+	height: 40px; 
+	width:150px;
+	cursor: hand;
+	word-spacing: 12px; 
+	text-decoration: none; 
+	padding-top: 10px;
+	background-image: url(../images/button.gif); 
+	border:#7b9ebd 1px solid;
+  text-kashida-space:20%; 
+}
+a.buttonlink3:link {
+	color: #036776; text-decoration: none
+}
+a.buttonlink3:visited {
+	color: #036776; text-decoration: none
+}
+a.buttonlink3:active {
+	color: #036776; cursor: hand; text-decoration: none
+}
+a.buttonlink3:hover {
+	color: #003aa3;
+	text-decoration: none;
+	/*background-image: url(../images/button_d.gif);*/
+}
+
+thead td{
+	font-size: 12px; font-family: "Verdana", "Arial","新宋体", "宋体";font-weight:normal;/*font-weight:bold;*/
+	vertical-align:bottom;
+	cursor: default; padding-top: 1px;  bottom: 1px;
+	height: 18px;
+}
+
+thead .arrow{
+	font-family: webdings;  padding: 0; font-size: 10px;
+	height: 11px; width: 10px; overflow: hidden;
+	margin-bottom: 2; margin-top: -3; padding: 0; padding-top: 0; padding-bottom: 2;
+}
+
+.txtntnull{
+    color: #BE0101;
+    font-size: 12px;	
+    font-family: arial, 宋体; 
+}
+.txtselnull{
+    color: blue;
+    font-size: 12px;	
+    font-family: arial, 宋体; 
+}	
+
+.mask {
+	OVERFLOW: hidden ;border: 1px #B7B7B7 solid;
+	width: 100%;word-wrap:normal;
+	word-wrap : break-word ;
+	word-break : keep-all ;
+	overflow:hidden;	border: 1px #B7B7B7 solid;
+	padding-top:5px;
+}
+
+
+.showHand {
+	CURSOR: hand
+}
+ 
+ 
+
+/*弹出窗口样式*/
+.popghostFrame {
+	Z-INDEX: 9998; 
+	POSITION: absolute; ; 
+	WIDTH: expression(this.nextSibling.offsetWidth); ; 
+	HEIGHT: expression(this.nextSibling.offsetHeight); ; 
+	TOP: expression(this.nextSibling.offsetTop); ; 
+	LEFT: expression(this.nextSibling.offsetLeft)
+}
+div.popwin{
+	POSITION:ABSOLUTE;
+	Z-INDEX:9999;
+	DISPLAY:NONE;
+	border: #8EAACE 1px solid;
+	background-color:white;
+  filter:progid:DXImageTransform.Microsoft.Shadow(color=#C6D4E4,direction=125,strength=3);
+}
+div.popwinalert{
+  padding-top:2px;
+  BORDER: #EA7408 1px solid;
+	BACKGROUND-COLOR:#FBD4B1;
+	filter:none;
+}
+div.popwinhint{
+	BACKGROUND-COLOR:inherit;
+	filter:none;
+}
+ 
+ 

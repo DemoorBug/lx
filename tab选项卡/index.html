@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>选项卡</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #323232;
+      font-family: "微软雅黑";
+      font-size: 12px;
+    }
+  </style>
+  <link rel="stylesheet" href="./css/master.css">
+</head>
+
+<body>
+  <div class="tab js-tab" data-config='{
+  "triggerType": "mouseover", "effect": "fade" , "inwoke": 1, "auto": 3000 }'>
+    <ul class="tab-nav">
+      <li class="actived">
+        <a href="javascript:;">新闻</a>
+      </li>
+      <li>
+        <a href="javascript:;">娱乐</a>
+      </li>
+      <li>
+        <a href="javascript:;">电影</a>
+      </li>
+    </ul>
+    <div class="content-wrap">
+      <div class="content-item current">
+        <img src="./images/ins.jpg" alt="">
+      </div>
+      <div class="content-item">
+        <img src="./images/t2.jpg" alt="">
+      </div>
+      <div class="content-item">
+        <img src="./images/tmao.gif" alt="">
+      </div>
+      <div class="content-item">
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <script src="./js/tab.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(function() {
+      // var tab1 = new Tab($('.js-tab').eq(0)) //默认
+      // Tab.init($('.js-tab'))
+      $('.js-tab').tab().css('background-color', 'red')
+    })
+  </script>
+
+</body>
+
+</html>

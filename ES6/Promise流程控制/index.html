@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>流程控制</title>
+  <style type="text/css" media="screen">
+    button {
+      border: 0;
+      background-color: #000;
+      box-shadow: 0 0 5px #000;
+      color: #fff;
+      cursor: pointer;
+      outline: none;
+    }
+    .box {
+      height: 50px;
+      width: 50px;
+      background-color: yellow;
+      box-shadow: 0 0 5px yellow;
+      transition: all .3s;
+
+      transform: translate(0, 0) 
+
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <button>开始</button>
+
+  <script>
+    function moveTo(el, x, y) {
+      return new Promise(resolve => {
+        el.style.transform = `translate(${x}px, ${y}px)`;
+        setTimeout(function() {
+          resolve();
+        }, 500)
+      });
+    }    
+    let el = document.body.querySelector('.box')
+
+    let ev = null;
+    document.body.querySelector('button').addEventListener('click', ev = function(e) {
+      // let getAttri = this.getAttribute('data-targger')
+      // if (getAttri === 'true') {
+        // return
+      // } 
+      // this.setAttribute('data-targger', true)
+      let self = this;
+      this.removeEventListener('click', ev)
+      moveTo(el, 100, 100)
+        .then(function(success) {
+          return moveTo(el, 50, 200);
+        })
+        .then(function() {
+          return moveTo(el, 0, 300);
+        })
+        .then(function() {
+          return moveTo(el, 0, 0)
+        })
+        .then(function() {
+          console.log('成功')
+          // self.setAttribute('data-targger', false)
+          self.addEventListener('click', ev)
+        })
+    })
+    
+  </script>
+</body>
+</html>

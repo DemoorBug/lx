@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>Slide</title>
+    <link rel="stylesheet" href="../站点导航/css/base.css">
+    <link rel="stylesheet" href="../站点导航/css/common.css">
+    <link rel="stylesheet" href="./css/main.css">
+
+  </head>
+  <body>
+    <div class="slider">
+      <div class="slider-container">
+        <div class="slider-item">
+          <a href="#"><img src="" data-src="./img/focus-slider/1.png" class="slider-img" alt=""></a>
+        </div>
+        <div class="slider-item">
+          <a href="#"><img src="" data-src="./img/focus-slider/2.png" class="slider-img" alt=""></a>
+        </div>
+        <div class="slider-item">
+          <a href="#"><img src="" data-src="./img/focus-slider/3.png" class="slider-img" alt=""></a>
+        </div>
+        <div class="slider-item">
+          <a href="#"><img src="" data-src="./img/focus-slider/4.png" class="slider-img" alt=""></a>
+        </div>
+      </div>
+      <ol class="slider-indicator-wrap">
+        <li class="slider-indicator text-hidden slider-indicator-active">1</li>
+        <li class="slider-indicator text-hidden">2</li>
+        <li class="slider-indicator text-hidden">3</li>
+        <li class="slider-indicator text-hidden">4</li>
+      </ol>
+      <a href="javascript:;" class="slider-control-left slider-control">&lt;</a>
+      <a href="javascript:;" class="slider-control-right slider-control">&gt;</a>
+    </div>
+    <script src="../站点导航/js/jquery.js"></script>
+    <script src="../站点导航/case/显示和隐藏/js/transition.js"></script>
+    <script src="../站点导航/case/显示和隐藏/js/index.js"></script>
+    <script src="./js/move.js"></script>
+    <script src="./js/slider.js"></script>
+    <script type="text/javascript">
+    $(function () {
+      var items = {};
+      var loadedItemNum = 0;
+      var totalItemNum = $('.slider').find('.slider-img').length
+      var loadItem;
+
+      $('.slider').on('slider-show', loadItem = function (e, index, elem) {
+        console.log(1);
+        if (items[index] !== 'loaded') {
+          var $img = $(elem).find('.slider-img')
+          loadImg($img.data('src'), function (url) {
+            $img.attr('src', url)
+            items[index] = 'loaded'
+            loadedItemNum++
+            if (loadedItemNum === totalItemNum) {
+              $('.slider').off('slider-show', loadItem)
+            }
+          }, function () {
+            console.log('错误操作')
+          })
+        }
+
+      })
+      $('.slider').slider({
+        animate: 'fade',
+        animation: 'slide'
+      })
+
+
+    })
+
+    function loadImg(url, imgLoaded, errLoaded) {
+      var image = new Image();
+
+      image.onerror = function () {
+        if (typeof imgLoaded === 'function') {
+          return errLoaded(url)
+        }
+      }
+
+      image.onload = function () {
+        if (typeof imgLoaded === 'function') {
+          return imgLoaded(url)
+        }
+      }
+      setTimeout(function () {
+        // $('slider-img').eq($(this).find('.slider-item').length-1).attr('src', $('slider-img').eq(0).attr('src'))
+        image.src = url;
+        if (!$('.slider-img').eq(0).attr('src')) {
+          setTimeout(function () {
+            $('.slider-img').eq($('.slider-item').length - 1).attr('src', $('.slider-img').eq(0).attr('src'))
+          }, 20)
+        }
+      }, 1000)
+    }
+
+    </script>
+  </body>
+</html>
